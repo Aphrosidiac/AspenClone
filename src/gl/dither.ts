@@ -167,6 +167,7 @@ export class DitherField {
     this.quad.material = this.ditherMat; g.setRenderTarget(null); g.render(this.scene, this.cam)
   }
   start() {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { this.renderFrame(0); return }
     if (this.running) return
     this.running = true; this.last = performance.now()
     const loop = (t: number) => { if (!this.running) return; const dt = (t - this.last) / 1000; this.last = t; this.renderFrame(dt); this.raf = requestAnimationFrame(loop) }

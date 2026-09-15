@@ -3,10 +3,11 @@ import { cx } from '../lib/cx'
 const ROLL = { transitionDuration: '0.65s', transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }
 
 /** One rolling digit column 0–9, translateY(-n em) — the reference's odometer cell. */
-function Digit({ d, delay = 0 }: { d: number; delay?: number }) {
+function Digit({ d, target, delay = 0 }: { d: number; target: number; delay?: number }) {
   return (
     <span className="relative inline-block overflow-hidden align-baseline" style={{ height: '1em', lineHeight: '1em' }}>
-      <span className="invisible">{d}</span>
+      {/* the cell is always as wide as the digit it will land on, so nothing shifts while rolling */}
+      <span className="invisible">{target}</span>
       <span className="absolute inset-x-0 top-0 flex flex-col transition-transform motion-reduce:transition-none" style={{ ...ROLL, transform: `translateY(${-d}em)`, transitionDelay: `${delay}s` }}>
         {Array.from({ length: 10 }, (_, i) => (
           <span key={i} className="block" style={{ height: '1em', lineHeight: '1em' }} aria-hidden={i !== d ? true : undefined}>{i}</span>
@@ -27,7 +28,7 @@ export function Odometer({ value, active = true, className, stagger = 0.06 }: { 
       <span className="sr-only">{value}</span>
       <span aria-hidden="true" className="flex items-center">
         {value.split('').map((ch, i) => {
-          if (/\d/.test(ch)) { const d = n++; return <Digit key={i} d={active ? +ch : 0} delay={d * stagger} /> }
+          if (/\d/.test(ch)) { const d = n++; return <Digit key={i} d={active ? +ch : 0} target={+ch} delay={d * stagger} /> }
           return <span key={i}>{ch}</span>
         })}
       </span>

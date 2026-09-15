@@ -8,7 +8,7 @@ import { ILLUSTRATIONS } from '../components/Illustrations'
 export function Insights() {
   const { show } = useModal()
   return (
-    <div data-page-builder-section="insightsSection" className="scroll-mt-(--site-header-height)">
+    <div data-page-builder-section="insightsSection" className="scroll-mt-(--site-header-height) overflow-x-clip">
       <div className="grid grid-cols-1 items-start lg:grid-cols-2 lg:divide-x">
         <div className="relative z-1 flex flex-col gap-60 border-t bg-theme-bg px-12 py-20 text-black lg:sticky lg:top-(--site-header-height) lg:min-h-[calc(100svh-var(--site-header-height))] lg:bg-grey lg:px-20">
           <ContainFit as="h2" lines={insights.title.split('\n')} />

@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
-import { ShaderField, type FieldEntry } from '../gl/shaderField'
+import type { ShaderField, FieldEntry } from '../gl/shaderField'
 import { cx } from '../lib/cx'
 import { useIsTouchDevice, usePrefersReducedMotion } from '../lib/motion'
 
@@ -19,15 +19,18 @@ export function ShaderCanvas({ children }: { children: ReactNode }) {
   useEffect(() => {
     const el = host.current
     if (!el) return
-    let f: ShaderField
-    try { f = new ShaderField(el) } catch { return }
-    setField(f)
+    let f: ShaderField | null = null
+    let disposed = false
     let visible = !document.hidden
-    const sync = () => { if (visible) f.start(); else f.stop() }
+    const sync = () => { if (!f) return; if (visible) f.start(); else f.stop() }
     const onVis = () => { visible = !document.hidden; sync() }
     document.addEventListener('visibilitychange', onVis)
-    sync()
-    return () => { document.removeEventListener('visibilitychange', onVis); f.dispose(); setField(null) }
+    import('../gl/shaderField').then(({ ShaderField }) => {
+      if (disposed) return
+      try { f = new ShaderField(el) } catch { return }
+      setField(f); sync()
+    })
+    return () => { disposed = true; document.removeEventListener('visibilitychange', onVis); f?.dispose(); setField(null) }
   }, [])
   return (
     <HostCtx.Provider value={{ host }}>

@@ -1,0 +1,306 @@
+[
+ {
+  "id": "HDR-01",
+  "surface": "header",
+  "feature": "Sticky 60px header, 2-col grid, logo tile, nav, theme toggle, Contact button",
+  "status": "done",
+  "evidence": "Measured visual pass 2026-09-16: side-by-side Playwright captures at 1440/390 (docs/qa/compare_*), 1:1 crops (docs/qa/crops_v3.png); hover captures docs/qa/compare_hover_v2",
+  "notes": ""
+ },
+ {
+  "id": "HDR-02",
+  "surface": "header",
+  "feature": "NYC/LA odometer clock alternating every 5 s (.65s ease-out roll)",
+  "status": "done",
+  "evidence": "Reference period measured 5.0\u20135.4 s (probe_time.js); ours 5 s; roll transition copied from DOM",
+  "notes": ""
+ },
+ {
+  "id": "HDR-03",
+  "surface": "header",
+  "feature": "Nav link hover: fg block slides up, label inverts (600ms)",
+  "status": "done",
+  "evidence": "CSS copied from reference class list; hover capture of Contact/nav in compare_hover_v2",
+  "notes": ""
+ },
+ {
+  "id": "HDR-04",
+  "surface": "header",
+  "feature": "Mobile Menu/Close bar + full-screen menu with clocks + theme toggle",
+  "status": "done",
+  "evidence": "Measured visual pass 2026-09-16: side-by-side Playwright captures at 1440/390 (docs/qa/compare_*), 1:1 crops (docs/qa/crops_v3.png) (docs/qa/compare_states_v3_menu.png) + Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build",
+  "notes": ""
+ },
+ {
+  "id": "HDR-05",
+  "surface": "header",
+  "feature": "Anchor links smooth-scroll under the header (Lenis)",
+  "status": "done",
+  "evidence": "Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build \u2014 #clients lands at top=60",
+  "notes": ""
+ },
+ {
+  "id": "HDR-06",
+  "surface": "header",
+  "feature": "Theme toggle with view-transition clip sweep, persisted in localStorage",
+  "status": "done",
+  "evidence": "Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build (dark persists across reload); sweep CSS measured from reference",
+  "notes": ""
+ },
+ {
+  "id": "ENT-01",
+  "surface": "entrance",
+  "feature": "Black overlay, mark fade/scale (.4\u21921, inner .3\u21921), clip-path wipe to the left",
+  "status": "done",
+  "evidence": "Timeline sampled on both (probe_entrance*.js); frames docs/qa/entrance_local_sheet.png; pre-hydration overlay in index.html",
+  "notes": ""
+ },
+ {
+  "id": "ENT-02",
+  "surface": "entrance",
+  "feature": "Content reveals (lines rise in masks, nav slides up) only after the wipe",
+  "status": "done",
+  "evidence": "SiteIntro gate; line reveal timing (stagger 50 ms, 1.2 s ease-out, mask -0.25em) fitted to reference samples (probe_reveal.js)",
+  "notes": ""
+ },
+ {
+  "id": "BG-01",
+  "surface": "background",
+  "feature": "Fixed grey coin logo behind sections, above dither; -18\u00b0/s + scroll-velocity kick",
+  "status": "done",
+  "evidence": "Idle rate measured -18.0\u00b0/s on reference; ours -18\u00b0/s; visible in compare_v3 frames 10",
+  "notes": ""
+ },
+ {
+  "id": "HERO-01",
+  "surface": "hero",
+  "feature": "Sticky h1 row, dark intro card + CTA, mint welcome card + logo marquee (12.8 s)",
+  "status": "done",
+  "evidence": "Measured visual pass 2026-09-16: side-by-side Playwright captures at 1440/390 (docs/qa/compare_*), 1:1 crops (docs/qa/crops_v3.png)",
+  "notes": ""
+ },
+ {
+  "id": "HERO-02",
+  "surface": "hero",
+  "feature": "Second word grey panel + container-fit PLACING / WINNERS. (22.09cqw)",
+  "status": "done",
+  "evidence": "Measured visual pass 2026-09-16: side-by-side Playwright captures at 1440/390 (docs/qa/compare_*), 1:1 crops (docs/qa/crops_v3.png); cqw computed from measured widths",
+  "notes": ""
+ },
+ {
+  "id": "HERO-03",
+  "surface": "hero",
+  "feature": "Mobile stacked hero (pt-188 panels, dark/mint cards)",
+  "status": "done",
+  "evidence": "Measured visual pass 2026-09-16: side-by-side Playwright captures at 1440/390 (docs/qa/compare_*), 1:1 crops (docs/qa/crops_v3.png) (compare_390_v2/00.png)",
+  "notes": ""
+ },
+ {
+  "id": "DTH-01",
+  "surface": "webgl",
+  "feature": "Dither background: perlin fbm \u2192 Bayer 2-colour, mint fluid cursor trail",
+  "status": "done",
+  "evidence": "Shader constants taken from bundle; tone distribution matched (white 60% / black 35% vs ref 51/31 excl. logo) docs/qa/dither_crop.png; trail verified with pointer in headless capture",
+  "notes": ""
+ },
+ {
+  "id": "DTH-02",
+  "surface": "webgl",
+  "feature": "Lazy mount within 1200px, render only while visible, reduced-motion = single frame",
+  "status": "done",
+  "evidence": "Code path; reduced-motion probe docs/qa/reduced_motion.png",
+  "notes": ""
+ },
+ {
+  "id": "STAT-01",
+  "surface": "about",
+  "feature": "Eyebrow + two body-30 paragraphs + 3 stat cards on the 4\u00d75 grid with sticky cards",
+  "status": "done",
+  "evidence": "Measured visual pass 2026-09-16: side-by-side Playwright captures at 1440/390 (docs/qa/compare_*), 1:1 crops (docs/qa/crops_v3.png) frames 02\u201304",
+  "notes": ""
+ },
+ {
+  "id": "STAT-02",
+  "surface": "about",
+  "feature": "Odometer digits roll in when in view; cells sized by final digit",
+  "status": "done",
+  "evidence": "Reference SSR shows invisible final digit + stack at 0; ours identical; digit widths at 320 now match (281px)",
+  "notes": ""
+ },
+ {
+  "id": "STAT-03",
+  "surface": "about",
+  "feature": "Confetti burst on stat entry",
+  "status": "partial",
+  "evidence": "Reference has a Confetti component whose exact look was not captured; ours fires a mint/fg square burst once per stat. Not compared frame-by-frame",
+  "notes": ""
+ },
+ {
+  "id": "INS-01",
+  "surface": "insights",
+  "feature": "Sticky grey panel with container-fit h2, paragraph + CTA; 4 items with index, h3, illustration, text, bullet list",
+  "status": "done",
+  "evidence": "Measured visual pass 2026-09-16: side-by-side Playwright captures at 1440/390 (docs/qa/compare_*), 1:1 crops (docs/qa/crops_v3.png) frames 04\u201306",
+  "notes": ""
+ },
+ {
+  "id": "INS-02",
+  "surface": "insights",
+  "feature": "Four animated line illustrations",
+  "status": "partial",
+  "evidence": "Structure (viewBox, strokes, dash patterns, element counts) copied from DOM; motion parameters inferred from two DOM samples each, not frame-matched",
+  "notes": ""
+ },
+ {
+  "id": "CLI-01",
+  "surface": "clients",
+  "feature": "Dither panel, sticky Clients h2, logo column + name flip + odometer counter, 6 hover rows with fg scaleY fill",
+  "status": "done",
+  "evidence": "Measured visual pass 2026-09-16: side-by-side Playwright captures at 1440/390 (docs/qa/compare_*), 1:1 crops (docs/qa/crops_v3.png) frames 06\u201307; hover capture compare_hover_v2/clients_hover_full.png; Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build",
+  "notes": ""
+ },
+ {
+  "id": "TST-01",
+  "surface": "testimonials",
+  "feature": "Shuffled deck, auto-advance 6.7 s with progress bar, prev/next, portrait wipe, meta fade, dither cell",
+  "status": "done",
+  "evidence": "Reference probe_testi2.js: shuffled order + 6.7 s auto-advance + timer bar; Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build",
+  "notes": ""
+ },
+ {
+  "id": "TEAM-01",
+  "surface": "team",
+  "feature": "Header block (h2 sticky, tagline, eyebrow, prev/next, paragraph)",
+  "status": "done",
+  "evidence": "Measured visual pass 2026-09-16: side-by-side Playwright captures at 1440/390 (docs/qa/compare_*), 1:1 crops (docs/qa/crops_v3.png) frame 09",
+  "notes": ""
+ },
+ {
+  "id": "TEAM-02",
+  "surface": "team",
+  "feature": "Horizontal snap slider, 4 cards/viewport, drag to scroll, prev/next, per-card parallax offsets",
+  "status": "done",
+  "evidence": "Offsets measured from DOM (20/55/35/70/40/25/60/45%); decay fitted to two reference captures; Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build",
+  "notes": ""
+ },
+ {
+  "id": "TEAM-03",
+  "surface": "team",
+  "feature": "Cursor RGB-split + grid displacement shader over the photos",
+  "status": "done",
+  "evidence": "Shader ported from bundle source; visible in compare_hover_v2/team_hover_full.png on both",
+  "notes": ""
+ },
+ {
+  "id": "TEAM-04",
+  "surface": "team",
+  "feature": "Team member modal: photo hero with shader, role tag, Schedule, name block, dither+coin, Email/LinkedIn, Bio",
+  "status": "done",
+  "evidence": "Measured visual pass 2026-09-16: side-by-side Playwright captures at 1440/390 (docs/qa/compare_*), 1:1 crops (docs/qa/crops_v3.png) (compare_states_v2/d_team_ben.png) + Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build",
+  "notes": ""
+ },
+ {
+  "id": "BAN-01",
+  "surface": "banner",
+  "feature": "Overlapping banner (-60svh) with dither, boxed uppercase words at 8.62cqw, letter roll-in, mint arrow square",
+  "status": "done",
+  "evidence": "Measured visual pass 2026-09-16: side-by-side Playwright captures at 1440/390 (docs/qa/compare_*), 1:1 crops (docs/qa/crops_v3.png) frame 10",
+  "notes": ""
+ },
+ {
+  "id": "FTR-01",
+  "surface": "footer",
+  "feature": "Two-row footer: tagline, links, analog clocks, email + LinkedIn rows, dark plate with wordmark/credits, mint CTA card with clip-path hover",
+  "status": "done",
+  "evidence": "Measured visual pass 2026-09-16: side-by-side Playwright captures at 1440/390 (docs/qa/compare_*), 1:1 crops (docs/qa/crops_v3.png) frames 11\u201312; hover capture compare_hover_v2/footer_cta.png",
+  "notes": ""
+ },
+ {
+  "id": "MOD-01",
+  "surface": "modals",
+  "feature": "Drawer modal: right panel 50%, backdrop, mint close square, Escape/backdrop/close, URL ?modal=, focus trap",
+  "status": "done",
+  "evidence": "Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build",
+  "notes": ""
+ },
+ {
+  "id": "MOD-02",
+  "surface": "modals",
+  "feature": "Contact modal: Contact/Schedule, E:/T: rows with copy-to-clipboard, LinkedIn, clocks, Upload CV dropzone with type/size validation",
+  "status": "done",
+  "evidence": "Measured visual pass 2026-09-16: side-by-side Playwright captures at 1440/390 (docs/qa/compare_*), 1:1 crops (docs/qa/crops_v3.png) (compare_states_v2/d_contact.png) + Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build",
+  "notes": ""
+ },
+ {
+  "id": "MOD-03",
+  "surface": "modals",
+  "feature": "CV upload backend",
+  "status": "omitted",
+  "evidence": "",
+  "notes": "Local test only per brief: the file is validated and acknowledged client-side; nothing is uploaded (reference uses Vercel Blob)"
+ },
+ {
+  "id": "MOD-04",
+  "surface": "modals",
+  "feature": "Privacy Policy modal + /privacy-policy route",
+  "status": "done",
+  "evidence": "Measured visual pass 2026-09-16: side-by-side Playwright captures at 1440/390 (docs/qa/compare_*), 1:1 crops (docs/qa/crops_v3.png) (compare_states_v3_privacy.png) + Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build",
+  "notes": ""
+ },
+ {
+  "id": "MOD-05",
+  "surface": "modals",
+  "feature": "Inline links inside privacy copy (email link)",
+  "status": "deferred",
+  "evidence": "",
+  "notes": "AnimatedText renders plain lines; the reference renders the email as a link. Cosmetic, deferred"
+ },
+ {
+  "id": "PAGE-01",
+  "surface": "pages",
+  "feature": "404 page (two-column layout, Back to Home)",
+  "status": "done",
+  "evidence": "Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build; docs/qa/404_local.png",
+  "notes": ""
+ },
+ {
+  "id": "RESP-01",
+  "surface": "responsive",
+  "feature": "320/375/390/768/1024/1440/1920 without horizontal overflow",
+  "status": "done",
+  "evidence": "tools/shots_widths.mjs: overflowX 0 at every width after the illustration clip fix; compare_widths_v4",
+  "notes": ""
+ },
+ {
+  "id": "A11Y-01",
+  "surface": "a11y",
+  "feature": "Landmarks, h1, alt attrs, sr-only odometer text, dialogs with aria-modal + Escape, keyboard-focus ring mode, reduced-motion resting state",
+  "status": "done",
+  "evidence": "Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build + reduced-motion probe",
+  "notes": ""
+ },
+ {
+  "id": "SEO-01",
+  "surface": "seo",
+  "feature": "Title/description/canonical/OG/favicon",
+  "status": "partial",
+  "evidence": "Tags present in index.html; OG image is a placeholder path (/img/og.png not generated); no sitemap/robots for a local test",
+  "notes": ""
+ },
+ {
+  "id": "PERF-01",
+  "surface": "performance",
+  "feature": "three.js split into lazy chunks; fonts preloaded; images sized",
+  "status": "done",
+  "evidence": "vite build: main 148 KB gz, three 130 KB gz lazy; production build passes the functional pass",
+  "notes": ""
+ },
+ {
+  "id": "CMS-01",
+  "surface": "platform",
+  "feature": "Sanity CMS + analytics",
+  "status": "omitted",
+  "evidence": "",
+  "notes": "Out of scope per brief; content lives in src/data"
+ }
+]

@@ -56,12 +56,16 @@ function splitIntoLines(el: HTMLElement, text: string): string[] {
     let m: RegExpExecArray | null
     while ((m = re.exec(p))) {
       const word = m[0], a = m.index, b = a + word.length
-      // pieces: whole word, or fragments after each soft hyphen if the browser broke it there
+      // pieces: the whole word, or the fragments the browser actually broke it into (soft hyphens, dashes, …)
       const pieces: Array<{ s: number; e: number; glue: boolean }> = []
       const tops = topOf(node, a, b)
-      if (tops.length > 1 && word.includes('-')) {
+      if (tops.length > 1) {
         let ps = 0
-        for (let i = 0; i < word.length; i++) if (word[i] === '-' && i < word.length - 1) { pieces.push({ s: ps, e: i + 1, glue: ps > 0 }); ps = i + 1 }
+        let lastTop = topOf(node, a, a + 1)[0]
+        for (let i = 1; i < word.length; i++) {
+          const t = topOf(node, a + i, a + i + 1)[0]
+          if (Math.abs(t - lastTop) > 1) { pieces.push({ s: ps, e: i, glue: ps > 0 }); ps = i; lastTop = t }
+        }
         pieces.push({ s: ps, e: word.length, glue: ps > 0 })
       } else pieces.push({ s: 0, e: word.length, glue: false })
       for (const pc of pieces) {

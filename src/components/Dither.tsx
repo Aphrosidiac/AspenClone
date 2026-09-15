@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { cx } from '../lib/cx'
-import { DitherField, type DitherOptions } from '../gl/dither'
+import type { DitherField, DitherOptions } from '../gl/dither'
 
 /** Lazy WebGL dither background. Mounts within 1200px of the viewport, renders only while visible. */
 export function Dither({ className, options }: { className?: string; options?: DitherOptions }) {
@@ -16,17 +16,21 @@ export function Dither({ className, options }: { className?: string; options?: D
   useEffect(() => {
     const el = ref.current
     if (!el || !near) return
-    let field: DitherField | null = null
-    try { field = new DitherField(el, options) } catch { return }
-    const f = field
+    let f: DitherField | null = null
+    let disposed = false
     let inView = true, visible = !document.hidden
-    const sync = () => { if (inView && visible) f.start(); else f.stop() }
+    const sync = () => { if (!f) return; if (inView && visible) f.start(); else f.stop() }
     const io = new IntersectionObserver(([e]) => { inView = e.isIntersecting; sync() }, { threshold: 0 })
     io.observe(el)
     const onVis = () => { visible = !document.hidden; sync() }
     document.addEventListener('visibilitychange', onVis)
-    sync()
-    return () => { io.disconnect(); document.removeEventListener('visibilitychange', onVis); f.dispose() }
+    // three.js lives in its own chunk, loaded on demand like the reference's `Dither` wrapper
+    import('../gl/dither').then(({ DitherField }) => {
+      if (disposed) return
+      try { f = new DitherField(el, options) } catch { return }
+      sync()
+    })
+    return () => { disposed = true; io.disconnect(); document.removeEventListener('visibilitychange', onVis); f?.dispose() }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [near])
   return (
