@@ -173,7 +173,10 @@ export class ShaderField {
     this.ro = new ResizeObserver(() => this.resize()); this.ro.observe(el)
     this.onMove = (e) => { this.pointer.x = e.clientX; this.pointer.y = e.clientY; this.pointer.valid = true }
     window.addEventListener('pointermove', this.onMove, { passive: true })
+    ;(window as unknown as { __shaderFields?: ShaderField[] }).__shaderFields ??= []
+    ;(window as unknown as { __shaderFields: ShaderField[] }).__shaderFields.push(this)
   }
+  debug() { return this.planes.map((p) => ({ visible: p.mesh.visible, pos: p.mesh.position.toArray(), scale: p.mesh.scale.toArray(), src: p.entry.src })) }
   private blit = (m: THREE.ShaderMaterial, t: THREE.WebGLRenderTarget) => {
     this.blitMesh.material = m
     const prev = this.renderer.getRenderTarget()

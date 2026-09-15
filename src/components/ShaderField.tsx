@@ -4,12 +4,14 @@ import { cx } from '../lib/cx'
 import { useIsTouchDevice, usePrefersReducedMotion } from '../lib/motion'
 
 const Ctx = createContext<ShaderField | null>(null)
+const HostCtx = createContext<{ host: React.RefObject<HTMLDivElement | null> } | null>(null)
 
 /**
- * Hosts one canvas (fixed or absolute) that draws every `ShaderImage` registered beneath it.
- * `position: fixed` + z-index -1 inside a stacking context sits behind the cards' chrome but above the page.
+ * Provides one WebGL canvas for every `ShaderImage` beneath it. Place `<ShaderCanvasHost/>` where the canvas
+ * element must live in the DOM (the reference keeps it inside the slider's own stacking context, z-index -1,
+ * so it paints above overlapping sections but below the cards' chrome).
  */
-export function ShaderCanvas({ children, position = 'fixed', zIndex = -1, className }: { children: ReactNode; position?: 'fixed' | 'absolute'; zIndex?: number; className?: string }) {
+export function ShaderCanvas({ children }: { children: ReactNode }) {
   const host = useRef<HTMLDivElement>(null)
   const [field, setField] = useState<ShaderField | null>(null)
   const reduced = usePrefersReducedMotion()
@@ -27,14 +29,20 @@ export function ShaderCanvas({ children, position = 'fixed', zIndex = -1, classN
     sync()
     return () => { document.removeEventListener('visibilitychange', onVis); f.dispose(); setField(null) }
   }, [])
+  return (
+    <HostCtx.Provider value={{ host }}>
+      <Ctx.Provider value={reduced || touch ? null : field}>{children}</Ctx.Provider>
+    </HostCtx.Provider>
+  )
+}
+
+export function ShaderCanvasHost({ position = 'fixed', zIndex = -1, className }: { position?: 'fixed' | 'absolute'; zIndex?: number; className?: string }) {
+  const ctx = useContext(HostCtx)
   const style: CSSProperties = { position, inset: 0, zIndex, pointerEvents: 'none' }
   return (
-    <Ctx.Provider value={reduced || touch ? null : field}>
-      {children}
-      <div className={cx('!border-0', className)} style={style} aria-hidden="true">
-        <div ref={host} style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }} />
-      </div>
-    </Ctx.Provider>
+    <div className={cx('!border-0', className)} style={style} aria-hidden="true">
+      <div ref={ctx?.host} style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }} />
+    </div>
   )
 }
 

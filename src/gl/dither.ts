@@ -80,6 +80,9 @@ const DITHER_FS = /* glsl */ `
 
 export type DitherOptions = { waveSpeed?: number; waveFrequency?: number; waveAmplitude?: number; mainColor?: string; bgColor?: string; colorNum?: number; pixelSize?: number; trailColor?: string; interactive?: boolean }
 
+/** hex → raw 0..1 components, no colour-space conversion (the reference feeds `new Color(r,g,b)` raw). */
+const raw = (hex: string) => { const c = new THREE.Color(); const n = parseInt(hex.replace('#', ''), 16); return c.setRGB(((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255, THREE.LinearSRGBColorSpace) }
+
 export class DitherField {
   renderer: THREE.WebGLRenderer
   canvas: HTMLCanvasElement
@@ -112,11 +115,11 @@ export class DitherField {
     const u = {
       invResolution: { value: new THREE.Vector2() }, resolution: { value: new THREE.Vector2() }, aspect: { value: 1 }, time: { value: 0 },
       waveSpeed: { value: o.waveSpeed }, waveFrequency: { value: o.waveFrequency }, waveAmplitude: { value: o.waveAmplitude },
-      waveColorDark: { value: new THREE.Color(o.mainColor) }, waveColorLight: { value: new THREE.Color(o.bgColor) },
+      waveColorDark: { value: raw(o.mainColor) }, waveColorLight: { value: raw(o.bgColor) },
     }
     this.distortMat = new THREE.ShaderMaterial({ vertexShader: QUAD_VS, fragmentShader: DISTORT_FS, depthTest: false, depthWrite: false, uniforms: { invResolution: u.invResolution, aspect: u.aspect, waveFrequency: u.waveFrequency, waveAmplitude: u.waveAmplitude } })
     this.waveMat = new THREE.ShaderMaterial({ vertexShader: QUAD_VS, fragmentShader: WAVE_FS, depthTest: false, depthWrite: false, uniforms: { ...u, distortedNoiseMap: { value: this.noiseRT.texture } } })
-    this.ditherMat = new THREE.ShaderMaterial({ vertexShader: QUAD_VS, fragmentShader: DITHER_FS, depthTest: false, depthWrite: false, uniforms: { inputBuffer: { value: this.sceneRT.texture }, dyeTexture: { value: null }, resolution: u.resolution, colorNum: { value: o.colorNum }, pixelSize: { value: o.pixelSize }, trailColor: { value: new THREE.Color(o.trailColor) }, trailStrength: { value: 0 } } })
+    this.ditherMat = new THREE.ShaderMaterial({ vertexShader: QUAD_VS, fragmentShader: DITHER_FS, depthTest: false, depthWrite: false, uniforms: { inputBuffer: { value: this.sceneRT.texture }, dyeTexture: { value: null }, resolution: u.resolution, colorNum: { value: o.colorNum }, pixelSize: { value: o.pixelSize }, trailColor: { value: raw(o.trailColor) }, trailStrength: { value: 0 } } })
     this.quad = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), this.waveMat)
     this.scene.add(this.quad)
     this.resize()

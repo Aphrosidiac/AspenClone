@@ -7,7 +7,7 @@ import { ArrowIcon } from './Logo'
  * (ease-out) while the label colour swaps. Variants = colour pairs; sizes = h-36 mono caption / h-60 body.
  */
 const base =
-  "relative isolate inline-flex min-w-0 shrink-0 items-center overflow-hidden whitespace-nowrap transition-[transform,color] duration-800 ease-out before:pointer-events-none before:absolute before:inset-y-0 before:left-0 before:z-0 before:h-full before:w-full before:scale-x-0 before:transition-transform before:duration-800 before:ease-out before:content-[''] hover:before:scale-x-100 motion-reduce:transition-none motion-reduce:before:transition-none disabled:pointer-events-none disabled:opacity-50 disabled:grayscale"
+  "isolate min-w-0 shrink-0 items-center overflow-hidden whitespace-nowrap transition-[transform,color] duration-800 ease-out before:pointer-events-none before:absolute before:inset-y-0 before:left-0 before:z-0 before:h-full before:w-full before:scale-x-0 before:transition-transform before:duration-800 before:ease-out before:content-[''] hover:before:scale-x-100 motion-reduce:transition-none motion-reduce:before:transition-none disabled:pointer-events-none disabled:opacity-50 disabled:grayscale"
 
 const variants = {
   fg: 'bg-theme-fg text-theme-bg before:bg-mint hover:text-black motion-reduce:hover:bg-mint motion-reduce:hover:text-black motion-reduce:before:hidden',
@@ -22,10 +22,10 @@ const sizes = {
   none: '',
 } as const
 
-type Common = { variant?: keyof typeof variants; size?: keyof typeof sizes; origin?: 'left' | 'right'; icon?: ReactNode | false; children?: ReactNode; className?: string; innerClassName?: string }
+type Common = { variant?: keyof typeof variants; size?: keyof typeof sizes; origin?: 'left' | 'right'; icon?: ReactNode | false; children?: ReactNode; className?: string; innerClassName?: string; /** drop `relative inline-flex` so the caller can position/display it (absolute card buttons) */ bare?: boolean }
 
-export function buttonClass({ variant = 'fg', size = 'sm', origin = 'left', className }: Omit<Common, 'icon' | 'children' | 'innerClassName'>) {
-  return cx(base, variants[variant], sizes[size], origin === 'left' ? 'before:origin-left' : 'before:origin-right', className)
+export function buttonClass({ variant = 'fg', size = 'sm', origin = 'left', className, bare = false }: Omit<Common, 'icon' | 'children' | 'innerClassName'>) {
+  return cx(bare ? '' : 'relative inline-flex', base, variants[variant], sizes[size], origin === 'left' ? 'before:origin-left' : 'before:origin-right', className)
 }
 
 export function Inner({ children, icon, className }: { children?: ReactNode; icon?: ReactNode | false; className?: string }) {
@@ -38,18 +38,18 @@ export function Inner({ children, icon, className }: { children?: ReactNode; ico
 }
 
 export const Button = forwardRef<HTMLButtonElement, Common & ButtonHTMLAttributes<HTMLButtonElement>>(function Button(
-  { variant, size, origin, icon, children, className, innerClassName, ...rest }, ref) {
+  { variant, size, origin, icon, children, className, innerClassName, bare, ...rest }, ref) {
   return (
-    <button ref={ref} type="button" className={buttonClass({ variant, size, origin, className })} {...rest}>
+    <button ref={ref} type="button" className={buttonClass({ variant, size, origin, className, bare })} {...rest}>
       <Inner icon={icon} className={innerClassName}>{children}</Inner>
     </button>
   )
 })
 
 export const ButtonLink = forwardRef<HTMLAnchorElement, Common & AnchorHTMLAttributes<HTMLAnchorElement>>(function ButtonLink(
-  { variant, size, origin, icon, children, className, innerClassName, ...rest }, ref) {
+  { variant, size, origin, icon, children, className, innerClassName, bare, ...rest }, ref) {
   return (
-    <a ref={ref} className={buttonClass({ variant, size, origin, className })} {...rest}>
+    <a ref={ref} className={buttonClass({ variant, size, origin, className, bare })} {...rest}>
       <Inner icon={icon} className={innerClassName}>{children}</Inner>
     </a>
   )

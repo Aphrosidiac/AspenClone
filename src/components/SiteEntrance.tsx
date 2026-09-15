@@ -14,6 +14,7 @@ export function SiteEntrance() {
   const [scope, animate] = useAnimate()
   const [gone, setGone] = useState(done)
   useEffect(() => {
+    document.getElementById('pre-entrance')?.remove()
     if (done) { setGone(true); return }
     let cancelled = false
     const run = async () => {

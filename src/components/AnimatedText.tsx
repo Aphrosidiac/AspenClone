@@ -29,44 +29,55 @@ type Props = {
 
 function splitIntoLines(el: HTMLElement, text: string): string[] {
   // Measure inside a throwaway absolutely-positioned child so React's own children are never touched.
+  // The text is laid out as ONE text node per paragraph (so shaping/kerning matches the real render) and
+  // word positions are read back through Ranges; a word the browser breaks at a hyphen is split there.
   const probe = document.createElement('span')
   probe.setAttribute('aria-hidden', 'true')
   probe.style.cssText = `position:absolute;left:0;top:0;visibility:hidden;pointer-events:none;display:block;width:${el.getBoundingClientRect().width}px;white-space:normal`
   const paragraphs = text.split('\n')
-  // words are split after soft hyphens too, so a browser break inside "venture-backed" groups correctly
-  const wordEls: Array<{ span: HTMLSpanElement; para: number; word: string; glue: boolean }> = []
+  const nodes: Text[] = []
   paragraphs.forEach((p, pi) => {
-    const words = p.split(/\s+/).filter(Boolean)
-    words.forEach((w, wi) => {
-      const parts = w.split(/(?<=-)(?=.)/)
-      parts.forEach((part, k) => {
-        const span = document.createElement('span')
-        span.textContent = part + (k === parts.length - 1 && wi < words.length - 1 ? ' ' : '')
-        probe.appendChild(span)
-        wordEls.push({ span, para: pi, word: part, glue: k > 0 })
-      })
-    })
+    const t = document.createTextNode(p)
+    probe.appendChild(t); nodes.push(t)
     if (pi < paragraphs.length - 1) probe.appendChild(document.createElement('br'))
   })
   const prevPos = el.style.position
   if (getComputedStyle(el).position === 'static') el.style.position = 'relative'
   el.appendChild(probe)
   const lines: string[] = []
-  let curTop: number | null = null, curPara = -1, cur = ''
-  for (const { span, para, word, glue } of wordEls) {
-    const top = span.offsetTop
-    if (curTop === null || para !== curPara || Math.abs(top - curTop) > 1) {
-      if (cur) lines.push(cur)
-      cur = word; curTop = top; curPara = para
-    } else cur += (glue ? '' : ' ') + word
-  }
-  if (cur) lines.push(cur)
+  const range = document.createRange()
+  const topOf = (node: Text, a: number, b: number) => { range.setStart(node, a); range.setEnd(node, b); const r = range.getClientRects(); return r.length ? Array.from(r).map((x) => x.top) : [0] }
+  nodes.forEach((node) => {
+    const p = node.data
+    let curTop: number | null = null
+    let cur = ''
+    const re = /\S+/g
+    let m: RegExpExecArray | null
+    while ((m = re.exec(p))) {
+      const word = m[0], a = m.index, b = a + word.length
+      // pieces: whole word, or fragments after each soft hyphen if the browser broke it there
+      const pieces: Array<{ s: number; e: number; glue: boolean }> = []
+      const tops = topOf(node, a, b)
+      if (tops.length > 1 && word.includes('-')) {
+        let ps = 0
+        for (let i = 0; i < word.length; i++) if (word[i] === '-' && i < word.length - 1) { pieces.push({ s: ps, e: i + 1, glue: ps > 0 }); ps = i + 1 }
+        pieces.push({ s: ps, e: word.length, glue: ps > 0 })
+      } else pieces.push({ s: 0, e: word.length, glue: false })
+      for (const pc of pieces) {
+        const top = topOf(node, a + pc.s, a + pc.e)[0]
+        const frag = word.slice(pc.s, pc.e)
+        if (curTop === null || Math.abs(top - curTop) > 1) { if (cur) lines.push(cur); cur = frag; curTop = top }
+        else cur += (pc.glue ? '' : ' ') + frag
+      }
+    }
+    if (cur) lines.push(cur)
+  })
   probe.remove()
   el.style.position = prevPos
   return lines
 }
 
-export function AnimatedText({ as: Tag = 'span', text, className, style, viewport = { margin: '0px 0px -10% 0px', amount: 0 }, delay = 0, stagger = 0.08, duration = 1.2, lineOffset = 0, onLines, immediate = false, id }: Props) {
+export function AnimatedText({ as: Tag = 'span', text, className, style, viewport = { margin: '0px 0px -10% 0px', amount: 0 }, delay = 0, stagger = 0.05, duration = 1.2, lineOffset = 0, onLines, immediate = false, id }: Props) {
   const ref = useRef<HTMLElement>(null)
   const [lines, setLines] = useState<string[] | null>(null)
   const [done, setDone] = useState(false)
@@ -113,13 +124,13 @@ export function AnimatedText({ as: Tag = 'span', text, className, style, viewpor
         <span style={{ visibility: 'hidden' }} aria-hidden="true">{text.split('\n').map((p, i, a) => (<span key={i}>{p}{i < a.length - 1 && <br />}</span>))}</span>
       ) : (
         lines.map((line, i) => (
-          <span key={i} data-mask={i} style={{ display: 'block', position: 'relative', clipPath: resting ? 'none' : 'inset(-0.15em 0 -0.15em 0)' }}>
+          <span key={i} data-mask={i} style={{ display: 'block', position: 'relative', clipPath: resting ? 'none' : 'inset(-0.25em 0px)' }}>
             <motion.span
               data-line={i}
               translate="no"
               style={{ display: 'block', position: 'relative', whiteSpace: 'nowrap' }}
-              initial={resting ? false : { y: '100%', opacity: 0 }}
-              animate={animateNow || resting ? { y: 0, opacity: 1 } : { y: '100%', opacity: 0 }}
+              initial={resting ? false : { y: '100%' }}
+              animate={animateNow || resting ? { y: 0 } : { y: '100%' }}
               transition={{ duration, ease: EASE_OUT, delay: delay + (i + lineOffset) * stagger }}
             >
               {line}

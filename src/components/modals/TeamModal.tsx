@@ -4,7 +4,7 @@ import { ButtonLink } from '../Button'
 import { Dither } from '../Dither'
 import { ArrowIcon, Mark } from '../Logo'
 import { Modal } from '../Modal'
-import { ShaderCanvas, ShaderImage } from '../ShaderField'
+import { ShaderCanvas, ShaderCanvasHost, ShaderImage } from '../ShaderField'
 
 function Member({ m }: { m: TeamMember }) {
   const label = `${m.first}-${m.last}`.replace(/^./, (c) => c.toUpperCase())
@@ -12,10 +12,11 @@ function Member({ m }: { m: TeamMember }) {
     <Modal name={m.slug} label={label}>
       <div className="grid min-h-full grid-rows-[auto_1fr] lg:grid-rows-[minmax(max-content,1fr)_minmax(max-content,1fr)]">
         <div className="relative isolate flex min-h-400 flex-col overflow-hidden">
-          <ShaderCanvas position="absolute" zIndex={0}>
+          <ShaderCanvas>
             <div className="absolute top-0 right-0 z-1 border-b border-l bg-theme-bg p-10 font-mono text-caption-10 text-theme-fg uppercase">{m.role}</div>
             <div className="pointer-events-none absolute inset-0"><ShaderImage src={m.image} /></div>
             {m.calendly && <ButtonLink variant="mint" size="row" href={m.calendly} target="_blank" rel="noopener" className="z-1 mt-auto lg:absolute lg:right-0 lg:bottom-0 lg:max-w-1/2">Schedule a quick call</ButtonLink>}
+            <ShaderCanvasHost position="absolute" zIndex={0} />
           </ShaderCanvas>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2">

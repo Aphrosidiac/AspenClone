@@ -5,7 +5,7 @@ import { AnimatedParagraphs, AnimatedText } from '../components/AnimatedText'
 import { buttonClass } from '../components/Button'
 import { Eyebrow } from '../components/Eyebrow'
 import { ArrowIcon } from '../components/Logo'
-import { ShaderCanvas, ShaderImage } from '../components/ShaderField'
+import { ShaderCanvas, ShaderCanvasHost, ShaderImage } from '../components/ShaderField'
 import { useLenis } from '../lib/lenis'
 import { cx } from '../lib/cx'
 
@@ -32,19 +32,19 @@ export function Team() {
     el.scrollBy({ left: dir * ((card?.offsetWidth ?? el.clientWidth / 4) + 1), behavior: 'smooth' })
   }
 
-  // scroll-linked parallax of the cards: offset% → 0 while the slider travels the lower 60% of the viewport
+  // scroll-linked parallax: each card keeps offset% × k, k = (cardTop / viewport)^1.7 — full offset while the
+  // row enters at the bottom, fading to ~0 as it reaches the top (fitted to the reference's captures)
   useEffect(() => {
     const el = slider.current
     if (!el) return
-    const cards = Array.from(el.children) as HTMLElement[]
+    const cards = Array.from(el.children).filter((c) => !(c as HTMLElement).hasAttribute('aria-hidden')) as HTMLElement[]
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
     let raf = 0
     const tick = () => {
-      const r = el.getBoundingClientRect()
       const vh = innerHeight
-      const p = reduce ? 1 : Math.min(1, Math.max(0, (vh - r.top) / (vh * 0.9)))
-      const e = 1 - Math.pow(1 - p, 3)
-      cards.forEach((c, i) => { c.style.transform = innerWidth >= 1024 ? `translateY(${(OFFSETS[i % OFFSETS.length] * (1 - e)).toFixed(2)}%)` : '' })
+      const top = el.getBoundingClientRect().top + vh * 0.2
+      const k = reduce ? 0 : Math.pow(Math.min(1, Math.max(0, top / vh)), 1.7)
+      cards.forEach((c, i) => { c.style.transform = innerWidth >= 1024 ? `translateY(${(OFFSETS[i % OFFSETS.length] * k).toFixed(2)}%)` : '' })
     }
     const onScroll = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(tick) }
     tick()
@@ -96,14 +96,14 @@ export function Team() {
         <p className="whitespace-pre-line text-headline-10"><AnimatedText text={team.tagline} /></p>
         <AnimatedParagraphs paragraphs={[team.text]} />
       </div>
-      <ShaderCanvas position="fixed" zIndex={-1}>
+      <ShaderCanvas>
         <div ref={slider} style={{ ['--card-basis' as string]: 'calc((100% - 3px) / 4)' }}
           className="lg:scrollbar-invisible relative z-1 flex flex-col gap-1 divide-y lg:-mt-[40vh] lg:-mb-[20vh] lg:snap-x lg:snap-mandatory lg:flex-row lg:items-start lg:divide-y-0 lg:overflow-x-auto lg:overflow-y-clip lg:py-[20vh] lg:[&>*]:cursor-grab">
           {team.members.map((m) => (
             <div key={m.slug} className="lg:shrink-0 lg:basis-(--card-basis) lg:snap-start lg:outline">
               <div className="relative isolate overflow-hidden aspect-[0.8]">
                 <button type="button" aria-label={`${m.first} ${m.last}`} onClick={() => show(m.slug)}
-                  className={cx(buttonClass({ variant: 'mint', size: 'none' }), 'peer absolute inset-x-0 bottom-0 z-1 block h-auto w-full px-12 pt-52 pb-20 font-sans text-body-20 normal-case lg:px-20')}>
+                  className={cx(buttonClass({ variant: 'mint', size: 'none', bare: true }), 'peer absolute inset-x-0 bottom-0 z-1 block h-auto w-full px-12 pt-52 pb-20 font-sans text-body-20 normal-case lg:px-20')}>
                   <span data-inner="true" className="relative z-10 flex w-full min-w-0 flex-row items-center justify-between gap-8">
                     <AnimatedText text={`${m.first}\n${m.last}`} />
                     <ArrowIcon />
@@ -114,6 +114,7 @@ export function Team() {
               </div>
             </div>
           ))}
+          <ShaderCanvasHost position="fixed" zIndex={-1} />
         </div>
       </ShaderCanvas>
     </div>

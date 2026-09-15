@@ -19,7 +19,15 @@ export function Modal({ name, label, children }: { name: string; label: string; 
   useEffect(() => {
     if (!isOpen) return
     lenis?.stop()
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close() }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') { close(); return }
+      if (e.key !== 'Tab' || !panel.current) return
+      const f = Array.from(panel.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled]), input:not([type=hidden]), [tabindex]:not([tabindex="-1"])')).filter((el) => el.offsetParent !== null || el.getClientRects().length > 0)
+      if (!f.length) return
+      const first = f[0], last = f[f.length - 1]
+      if (e.shiftKey && (document.activeElement === first || document.activeElement === panel.current)) { e.preventDefault(); last.focus() }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus() }
+    }
     addEventListener('keydown', onKey)
     const t = setTimeout(() => panel.current?.focus(), 50)
     return () => { removeEventListener('keydown', onKey); clearTimeout(t); lenis?.start() }

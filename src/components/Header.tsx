@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'motion/react'
 import { useEffect, useId, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { brand, nav } from '../data/site'
 import { cx } from '../lib/cx'
 import { useIntro } from '../lib/intro'
@@ -14,17 +15,45 @@ import { Mark } from './Logo'
 import { ThemeToggle } from './ThemeToggle'
 
 /** Nav link: a fg block slides up from below on hover while the label inverts (600ms ease-out). */
+export function useAnchorScroll() {
+  const lenis = useLenis()
+  return (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const hash = new URL(e.currentTarget.href).hash
+    if (!hash || location.pathname !== '/') return
+    const target = document.querySelector(hash)
+    if (!target) return
+    e.preventDefault()
+    history.replaceState(null, '', hash)
+    if (lenis) lenis.scrollTo(target as HTMLElement, { offset: -60, duration: 1.4 })
+    else target.scrollIntoView()
+  }
+}
+
 export function NavLink({ href, children, delay = 0 }: { href: string; children: string; delay?: number }) {
   const { done } = useIntro()
+  const onClick = useAnchorScroll()
   return (
     <span className="inline-flex overflow-hidden">
       <motion.span className="inline-flex" initial={{ y: '100%' }} animate={done ? { y: 0 } : { y: '100%' }} transition={{ duration: 1, ease: EASE_OUT, delay }}>
-        <a draggable={false} href={href} className="group relative inline-flex overflow-hidden p-4 text-theme-fg transition-colors duration-600 ease-out hover:text-theme-bg motion-reduce:transition-none">
+        <a draggable={false} href={href} onClick={onClick} className="group relative inline-flex overflow-hidden p-4 text-theme-fg transition-colors duration-600 ease-out hover:text-theme-bg motion-reduce:transition-none">
           <span aria-hidden="true" className="pointer-events-none absolute inset-0 bg-theme-fg transition-transform duration-600 ease-out [transform:translate(0,calc(100%+1px))] group-hover:[transform:translate(0,0)] motion-reduce:transition-none" />
           <span className="relative">{children}</span>
         </a>
       </motion.span>
     </span>
+  )
+}
+
+function MenuLink({ href, children, onDone }: { href: string; children: string; onDone: () => void }) {
+  const lenis = useLenis()
+  return (
+    <a className="flex flex-1 items-end bg-theme-bg px-12 py-20 text-headline-20" href={href} onClick={(e) => {
+      const target = document.querySelector(new URL(e.currentTarget.href).hash)
+      if (!target) return
+      e.preventDefault(); onDone()
+      history.replaceState(null, '', new URL(e.currentTarget.href).hash)
+      setTimeout(() => { lenis?.start(); lenis ? lenis.scrollTo(target as HTMLElement, { offset: -60, duration: 1.4 }) : target.scrollIntoView() }, 50)
+    }}>{children}</a>
   )
 }
 
@@ -78,7 +107,7 @@ export function Header() {
           </button>
         </div>
       </header>
-      <AnimatePresence>
+      {createPortal(<AnimatePresence>
         {open && (
           <div id={menuId} tabIndex={-1} role="dialog" aria-modal="true" aria-label="Site navigation" className="fixed inset-x-0 top-[calc(var(--site-header-height)+1px)] bottom-0 isolate z-1 outline-none lg:hidden">
             <p className="sr-only">Site navigation. Press Escape to close.</p>
@@ -89,7 +118,7 @@ export function Header() {
                     <motion.li key={n.text} className="relative flex flex-1 border-b bg-theme-bg" style={{ zIndex: a.length - i }}
                       initial={{ y: '-100%' }} animate={{ y: 0 }} exit={{ y: '-100%' }} transition={{ duration: 0.9, ease: EASE_OUT, delay: i * 0.04 }}>
                       {n.href ? (
-                        <a className="flex flex-1 items-end bg-theme-bg px-12 py-20 text-headline-20" href={n.href} onClick={() => setOpen(false)}>{n.text}</a>
+                        <MenuLink href={n.href} onDone={() => setOpen(false)}>{n.text}</MenuLink>
                       ) : (
                         <button type="button" className="flex flex-1 items-end bg-theme-bg px-12 py-20 text-headline-20" onClick={() => { setOpen(false); show('contact') }}>{n.text}</button>
                       )}
@@ -105,7 +134,7 @@ export function Header() {
             </div>
           </div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>, document.body)}
     </>
   )
 }

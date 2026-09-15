@@ -1,0 +1,24 @@
+import { chromium } from '/Users/fakhrul/Desktop/dev/Shoal/node_modules/playwright/index.mjs';
+import fs from 'node:fs';
+const URL = process.argv[2], OUT = process.argv[3];
+fs.mkdirSync(OUT, { recursive: true });
+const browser = await chromium.launch({ headless: true, executablePath: '/Users/fakhrul/Library/Caches/ms-playwright/chromium_headless_shell-1243/chrome-headless-shell-mac-arm64/chrome-headless-shell' });
+const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
+const page = await ctx.newPage();
+await page.goto(URL, { waitUntil: 'networkidle' }); await page.waitForTimeout(7000);
+const clip = async (name, sel, pad = 20, wait = 1000) => { const el = await page.$(sel); if (!el) { console.log('missing', sel); return } const b0 = await el.boundingBox(); if (!b0) { console.log('nobox', sel); return } await page.mouse.move(b0.x + b0.width / 2, b0.y + b0.height / 2, { steps: 4 }); await page.waitForTimeout(wait); const b = await el.boundingBox(); await page.screenshot({ path: `${OUT}/${name}.png`, clip: { x: Math.max(0, b.x - pad), y: Math.max(0, b.y - pad), width: b.width + pad * 2, height: b.height + pad * 2 } }) }
+await clip('contact_btn', 'header button:has-text("Contact")');
+await clip('nav_link', 'header a[href="/#clients"]', 12);
+await clip('hero_cta', 'button:has-text("Start a conversation")', 12);
+await page.evaluate(() => document.querySelector('#clients').scrollIntoView()); await page.waitForTimeout(1200);
+await page.evaluate(() => window.scrollBy(0, 500)); await page.waitForTimeout(1200);
+await clip('client_row', 'ul[aria-label="Clients"] li:nth-child(4) button', 4);
+await page.screenshot({ path: `${OUT}/clients_hover_full.png` });
+await page.evaluate(() => document.querySelector('#team').scrollIntoView()); await page.waitForTimeout(1500);
+await page.evaluate(() => window.scrollBy(0, 400)); await page.waitForTimeout(1500);
+await clip('team_card', 'button[aria-label="Lira Aptekman"]', 0, 1200);
+await page.screenshot({ path: `${OUT}/team_hover_full.png` });
+await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight)); await page.waitForTimeout(1200);
+await clip('footer_cta', 'footer button.group', 0, 1000);
+await clip('footer_email', 'footer a[href^="mailto"]', 0, 1000);
+await browser.close();
