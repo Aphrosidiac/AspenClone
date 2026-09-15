@@ -118,7 +118,7 @@
 | ID | Feature | Status | Evidence | Notes |
 | --- | --- | --- | --- | --- |
 | TEAM-01 | Header block (h2 sticky, tagline, eyebrow, prev/next, paragraph) | done | Measured visual pass 2026-09-16: side-by-side Playwright captures at 1440/390 (docs/qa/compare_*), 1:1 crops (docs/qa/crops_v3.png) frame 09 |  |
-| TEAM-02 | Horizontal snap slider, 4 cards/viewport, drag to scroll, prev/next, per-card parallax offsets | done | Offsets measured from DOM (20/55/35/70/40/25/60/45%); decay fitted to two reference captures; Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build |  |
+| TEAM-02 | Horizontal snap slider, 4 cards/viewport, drag to scroll, prev/next, per-card parallax offsets | done | Offsets measured from DOM (20/55/35/70/40/25/60/45%); scroll mapping measured at three scroll positions on the reference (probe_parallax.js) and reproduced to ±0.03%; functional pass 2026-09-16 |  |
 | TEAM-03 | Cursor RGB-split + grid displacement shader over the photos | done | Shader ported from bundle source; visible in compare_hover_v2/team_hover_full.png on both |  |
 | TEAM-04 | Team member modal: photo hero with shader, role tag, Schedule, name block, dither+coin, Email/LinkedIn, Bio | done | Measured visual pass 2026-09-16: side-by-side Playwright captures at 1440/390 (docs/qa/compare_*), 1:1 crops (docs/qa/crops_v3.png) (compare_states_v2/d_team_ben.png) + Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build |  |
 
@@ -126,7 +126,7 @@
 
 | ID | Feature | Status | Evidence | Notes |
 | --- | --- | --- | --- | --- |
-| TST-01 | Shuffled deck, auto-advance 6.7 s with progress bar, prev/next, portrait wipe, meta fade, dither cell | done | Reference probe_testi2.js: shuffled order + 6.7 s auto-advance + timer bar; Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build |  |
+| TST-01 | Shuffled deck, auto-advance 6.7 s with progress bar, prev/next, portrait wipe, meta fade, dither cell | done | Reference probe_testi2.js: shuffled order + 6.7 s auto-advance + timer bar; Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build; quote exit (lines rise out, 0.6 s) and meta 8px fades sampled from the reference (probe_portrait.js) |  |
 
 ## webgl
 

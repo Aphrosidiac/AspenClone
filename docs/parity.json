@@ -164,7 +164,7 @@
   "surface": "testimonials",
   "feature": "Shuffled deck, auto-advance 6.7 s with progress bar, prev/next, portrait wipe, meta fade, dither cell",
   "status": "done",
-  "evidence": "Reference probe_testi2.js: shuffled order + 6.7 s auto-advance + timer bar; Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build",
+  "evidence": "Reference probe_testi2.js: shuffled order + 6.7 s auto-advance + timer bar; Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build; quote exit (lines rise out, 0.6 s) and meta 8px fades sampled from the reference (probe_portrait.js)",
   "notes": ""
  },
  {
@@ -180,7 +180,7 @@
   "surface": "team",
   "feature": "Horizontal snap slider, 4 cards/viewport, drag to scroll, prev/next, per-card parallax offsets",
   "status": "done",
-  "evidence": "Offsets measured from DOM (20/55/35/70/40/25/60/45%); decay fitted to two reference captures; Functional pass 2026-09-16: tools/functional.mjs 36/36 on dev + production build",
+  "evidence": "Offsets measured from DOM (20/55/35/70/40/25/60/45%); scroll mapping measured at three scroll positions on the reference (probe_parallax.js) and reproduced to \u00b10.03%; functional pass 2026-09-16",
   "notes": ""
  },
  {

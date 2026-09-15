@@ -58,7 +58,7 @@ function Portrait({ src, k, className }: { src: string; k: number; className?: s
 function Meta({ label, value, k }: { label: string; value: string; k: number }) {
   return (
     <AnimatePresence mode="wait" initial={false}>
-      <motion.div key={k} className="flex flex-col gap-8" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.5, ease: EASE_OUT }}>
+      <motion.div key={k} className="flex flex-col gap-8" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }} transition={{ duration: 0.5, ease: EASE_OUT }}>
         <p className="font-medium text-caption-20">{label}</p>
         <p className="font-mono text-caption-10 uppercase opacity-60">{value}</p>
       </motion.div>
@@ -71,9 +71,9 @@ function Quote({ t, k, className, iconClassName }: { t: (typeof testimonials)[nu
     <AnimatePresence mode="wait" initial={false}>
       <motion.div key={k} className={cx('contents', className)}>
         <motion.div className={iconClassName} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}><QuoteIcon /></motion.div>
-        <motion.div exit={{ opacity: 0, transition: { duration: 0.3 } }}>
-          <AnimatedParagraphs paragraphs={t.text} className="text-headline-10" viewport={{ margin: '0px', amount: 0 }} />
-        </motion.div>
+        <div>
+          <AnimatedParagraphs paragraphs={t.text} className="text-headline-10" viewport={{ margin: '0px', amount: 0 }} keepMask />
+        </div>
       </motion.div>
     </AnimatePresence>
   )
@@ -103,7 +103,7 @@ export function Testimonials() {
             <div className="mb-64"><Quote t={t} k={index} iconClassName="mb-24" /></div>
             <div className="mt-auto flex items-end justify-between gap-20">
               <AnimatePresence mode="wait" initial={false}>
-                <motion.div key={index} className="flex flex-col gap-8" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.5, ease: EASE_OUT }}>
+                <motion.div key={index} className="flex flex-col gap-8" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }} transition={{ duration: 0.5, ease: EASE_OUT }}>
                   <p>{t.name}</p>
                   {t.role && <p className="font-mono text-caption-10 uppercase opacity-50">{t.role}</p>}
                 </motion.div>
@@ -131,7 +131,7 @@ export function Testimonials() {
               <Quote t={t} k={index} />
               <div className="mt-auto flex items-end justify-between">
                 <AnimatePresence mode="wait" initial={false}>
-                  <motion.div key={index} className="flex flex-col gap-8" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.5, ease: EASE_OUT }}>
+                  <motion.div key={index} className="flex flex-col gap-8" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }} transition={{ duration: 0.5, ease: EASE_OUT }}>
                     <p>{t.name}</p>
                     {t.role && <p className="font-mono text-caption-10 uppercase opacity-50">{t.role}</p>}
                   </motion.div>

@@ -26,6 +26,8 @@ type Props = {
   /** render lines without animating (used when content swaps under an already-revealed block) */
   immediate?: boolean
   id?: string
+  /** keep the line masks clipped at rest so an AnimatePresence exit (lines rising out) stays masked */
+  keepMask?: boolean
 }
 
 function splitIntoLines(el: HTMLElement, text: string): string[] {
@@ -82,7 +84,7 @@ function splitIntoLines(el: HTMLElement, text: string): string[] {
   return lines
 }
 
-export function AnimatedText({ as: Tag = 'span', text, className, style, viewport = { margin: '0px', amount: 0 }, delay = 0, stagger = 0.065, duration = 1, lineOffset = 0, onLines, immediate = false, id }: Props) {
+export function AnimatedText({ as: Tag = 'span', text, className, style, viewport = { margin: '0px', amount: 0 }, delay = 0, stagger = 0.065, duration = 1, lineOffset = 0, onLines, immediate = false, id, keepMask = false }: Props) {
   const ref = useRef<HTMLElement>(null)
   const [lines, setLines] = useState<string[] | null>(null)
   const [done, setDone] = useState(false)
@@ -128,13 +130,14 @@ export function AnimatedText({ as: Tag = 'span', text, className, style, viewpor
         <span style={{ visibility: 'hidden' }} aria-hidden="true">{text.split('\n').map((p, i, a) => (<span key={i}>{p}{i < a.length - 1 && <br />}</span>))}</span>
       ) : (
         lines.map((line, i) => (
-          <span key={i} data-mask={i} style={{ display: 'block', position: 'relative', clipPath: resting ? 'none' : 'inset(-0.25em 0px)' }}>
+          <span key={i} data-mask={i} style={{ display: 'block', position: 'relative', clipPath: resting && !keepMask ? 'none' : 'inset(-0.25em 0px)' }}>
             <motion.span
               data-line={i}
               translate="no"
               style={{ display: 'block', position: 'relative', whiteSpace: 'nowrap' }}
               initial={resting ? false : { y: '100%', opacity: 0 }}
               animate={animateNow || resting ? { y: 0, opacity: 1 } : { y: '100%', opacity: 0 }}
+              exit={{ y: '-100%', opacity: 0, transition: { duration: 0.6, ease: EASE_OUT, delay: (i + lineOffset) * 0.03 } }}
               transition={{ duration, ease: EASE_OUT, delay: delay + (i + lineOffset) * stagger }}
             >
               {line}
@@ -147,14 +150,14 @@ export function AnimatedText({ as: Tag = 'span', text, className, style, viewpor
 }
 
 /** A stack of paragraphs (`gap-[1em]`) that share one reveal and one continuous stagger. */
-export function AnimatedParagraphs({ paragraphs, className, itemClassName, viewport, delay = 0, as: Tag = 'div', itemAs = 'div', immediate }: { paragraphs: string[]; className?: string; itemClassName?: string; viewport?: Props['viewport']; delay?: number; as?: ElementType; itemAs?: ElementType; immediate?: boolean }) {
+export function AnimatedParagraphs({ paragraphs, className, itemClassName, viewport, delay = 0, as: Tag = 'div', itemAs = 'div', immediate, keepMask }: { paragraphs: string[]; className?: string; itemClassName?: string; viewport?: Props['viewport']; delay?: number; as?: ElementType; itemAs?: ElementType; immediate?: boolean; keepMask?: boolean }) {
   const [counts, setCounts] = useState<number[]>(() => paragraphs.map(() => 0))
   const offsets = counts.reduce<number[]>((acc, _n, i) => { acc.push(i === 0 ? 0 : acc[i - 1] + counts[i - 1]); return acc }, [])
   return (
     <Tag className={cx('flex w-full flex-col gap-[1em]', className)}>
       {paragraphs.map((p, i) => (
         p === '' ? <div key={i} className="empty:hidden" data-text="true" /> : (
-          <AnimatedText key={i} as={itemAs} text={p} className={cx('block', itemClassName)} viewport={viewport} delay={delay} lineOffset={offsets[i]} immediate={immediate}
+          <AnimatedText key={i} as={itemAs} text={p} className={cx('block', itemClassName)} viewport={viewport} delay={delay} lineOffset={offsets[i]} immediate={immediate} keepMask={keepMask}
             onLines={(count) => setCounts((c) => (c[i] === count ? c : c.map((v, j) => (j === i ? count : v))))} />
         )
       ))}

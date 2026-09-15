@@ -32,8 +32,8 @@ export function Team() {
     el.scrollBy({ left: dir * ((card?.offsetWidth ?? el.clientWidth / 4) + 1), behavior: 'smooth' })
   }
 
-  // scroll-linked parallax: each card keeps offset% × k, k = (cardTop / viewport)^1.7 — full offset while the
-  // row enters at the bottom, fading to ~0 as it reaches the top (fitted to the reference's captures)
+  // scroll-linked parallax: offset% × f, f linear in the slider's top edge — measured on the reference at three
+  // scroll positions: f = 1 while the row is below the fold, 0 when its top edge passes 5vh, negative above
   useEffect(() => {
     const el = slider.current
     if (!el) return
@@ -42,9 +42,9 @@ export function Team() {
     let raf = 0
     const tick = () => {
       const vh = innerHeight
-      const top = el.getBoundingClientRect().top + vh * 0.2
-      const k = reduce ? 0 : Math.pow(Math.min(1, Math.max(0, top / vh)), 1.7)
-      cards.forEach((c, i) => { c.style.transform = innerWidth >= 1024 ? `translateY(${(OFFSETS[i % OFFSETS.length] * k).toFixed(2)}%)` : '' })
+      const top = el.getBoundingClientRect().top
+      const f = reduce ? 0 : Math.max(-1, Math.min(1, (top - 0.05 * vh) / (0.95 * vh)))
+      cards.forEach((c, i) => { c.style.transform = innerWidth >= 1024 ? `translateY(${(OFFSETS[i % OFFSETS.length] * f).toFixed(2)}%)` : '' })
     }
     const onScroll = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(tick) }
     tick()

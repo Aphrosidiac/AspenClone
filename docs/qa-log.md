@@ -54,3 +54,12 @@ and timers stalled there, so motion was measured headlessly instead (the tab the
 - Illustration motion parameters and the confetti burst are inferred, not frame-matched.
 - Privacy copy renders the email as plain text (reference: link).
 - OG image not generated; no CV upload backend (local test).
+
+### Visual pass 5 — `docs/qa/compare_v5`
+- Diff scores (>40 grey-level px %): 5.5, 1.9, 2.7, 0.1, 0.4, 1.2, 4.5, 1.4, 10.3, 6.6, 10.7, 3.7, 3.6 — the higher
+  frames are the animated dither fields / a mid-transition testimonial, not layout.
+- Team parallax re-measured at three scroll positions on the reference: translateY = offset × f with
+  f = clamp((sliderTop − 0.05vh) / 0.95vh, −1, 1). Ours now reproduces the reference's transforms to ±0.03%.
+- Testimonial transition sampled: old lines exit upward (−100%, opacity 0) under the mask, meta blocks fade with an
+  8 px translate — implemented via AnimatePresence exit on the line spans (`keepMask`).
+- Live pane checks: mint fluid trail on the dither, RGB-split/grid displacement on team photos, theme sweep.
