@@ -46,11 +46,13 @@ export function Team() {
       const f = reduce ? 0 : Math.max(-1, Math.min(1, (top - 0.05 * vh) / (0.95 * vh)))
       cards.forEach((c, i) => { c.style.transform = innerWidth >= 1024 ? `translateY(${(OFFSETS[i % OFFSETS.length] * f).toFixed(2)}%)` : '' })
     }
-    const onScroll = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(tick) }
+    // Lenis fires 'scroll' inside its own rAF, before paint — update synchronously there so the cards never lag
+    // the page by a frame (that lag reads as twitching); native scroll is the fallback when Lenis is off.
+    const onNative = () => { if (!lenis) { cancelAnimationFrame(raf); raf = requestAnimationFrame(tick) } }
     tick()
-    addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll)
-    lenis?.on('scroll', onScroll)
-    return () => { removeEventListener('scroll', onScroll); removeEventListener('resize', onScroll); lenis?.off('scroll', onScroll); cancelAnimationFrame(raf) }
+    addEventListener('scroll', onNative, { passive: true }); addEventListener('resize', tick)
+    lenis?.on('scroll', tick)
+    return () => { removeEventListener('scroll', onNative); removeEventListener('resize', tick); lenis?.off('scroll', tick); cancelAnimationFrame(raf) }
   }, [lenis])
 
   // drag to scroll

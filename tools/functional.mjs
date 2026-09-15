@@ -56,6 +56,7 @@ async function desktop() {
   check('client hover updates counter', (await page.textContent('#clients .tabular-nums .sr-only')) === '03');
   // testimonials
   await page.evaluate(() => document.querySelector('#testimonials').scrollIntoView()); await page.waitForTimeout(1500);
+  await page.click('#testimonials div.hidden.lg\\:grid button[aria-label="Next testimonial"]'); await page.waitForTimeout(1200); // resets the 6.7 s auto-advance so the next reads are deterministic
   const name0 = await page.textContent('#testimonials div.hidden.lg\\:grid .mt-auto p');
   await page.click('#testimonials div.hidden.lg\\:grid button[aria-label="Next testimonial"]'); await page.waitForTimeout(900);
   const name1 = await page.textContent('#testimonials div.hidden.lg\\:grid .mt-auto p');
