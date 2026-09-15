@@ -27,7 +27,7 @@ async function desktop() {
   // copy button
   await page.click('header button:has-text("Contact")'); await page.waitForTimeout(1500);
   await ctx.grantPermissions(['clipboard-read', 'clipboard-write']).catch(() => {});
-  await page.click('[data-modal=contact] button[aria-label="Copy to clipboard"]'); await page.waitForTimeout(300);
+  await page.click('[data-modal=contact] button[aria-label="Copy to clipboard"]'); await page.waitForTimeout(700);
   check('copy button shows check', (await page.$eval('[data-modal=contact] button[aria-label="Copy to clipboard"] path[style]', (e) => e.style.opacity)) === '1');
   // upload: set a file
   const input = await page.$('[data-modal=contact] input[type=file]');
@@ -57,10 +57,10 @@ async function desktop() {
   // testimonials
   await page.evaluate(() => document.querySelector('#testimonials').scrollIntoView()); await page.waitForTimeout(1500);
   const name0 = await page.textContent('#testimonials div.hidden.lg\\:grid .mt-auto p');
-  await page.click('#testimonials div.hidden.lg\\:grid button[aria-label="Next testimonial"]'); await page.waitForTimeout(1600);
+  await page.click('#testimonials div.hidden.lg\\:grid button[aria-label="Next testimonial"]'); await page.waitForTimeout(900);
   const name1 = await page.textContent('#testimonials div.hidden.lg\\:grid .mt-auto p');
   check('testimonial next changes item', name0 !== name1, `${name0} -> ${name1}`);
-  await page.click('#testimonials div.hidden.lg\\:grid button[aria-label="Previous testimonial"]'); await page.waitForTimeout(1600);
+  await page.click('#testimonials div.hidden.lg\\:grid button[aria-label="Previous testimonial"]'); await page.waitForTimeout(900);
   check('testimonial prev returns', (await page.textContent('#testimonials div.hidden.lg\\:grid .mt-auto p')) === name0);
   // team slider
   await page.evaluate(() => document.querySelector('#team').scrollIntoView()); await page.waitForTimeout(1500);

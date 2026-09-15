@@ -39,7 +39,7 @@ function Member({ m }: { m: TeamMember }) {
             {m.bio.length > 0 && (
               <div>
                 <h3 className="mb-24 font-semibold">Bio</h3>
-                <AnimatedParagraphs paragraphs={m.bio} viewport={false} delay={0.3} />
+                <AnimatedParagraphs paragraphs={m.bio} viewport={{ margin: "0px", amount: 0 }} />
               </div>
             )}
           </div>

@@ -3,6 +3,7 @@ import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type 
 import { cx } from '../lib/cx'
 import { useIntro } from '../lib/intro'
 import { EASE_OUT, usePrefersReducedMotion } from '../lib/motion'
+import { fontsReady } from '../lib/fonts'
 
 /**
  * Line-split text reveal (the reference's `AnimatedText` / `data-split="lines"`).
@@ -90,17 +91,16 @@ export function AnimatedText({ as: Tag = 'span', text, className, style, viewpor
     const el = ref.current
     if (!el) return
     let cancelled = false
+    let ready = false
     const run = () => {
-      if (cancelled || !ref.current) return
+      if (cancelled || !ready || !ref.current) return
       const l = splitIntoLines(ref.current, text)
-      setLines(l)
+      setLines((prev) => (prev && prev.length === l.length && prev.every((x, i) => x === l[i]) ? prev : l))
       onLines?.(l.length)
     }
-    document.fonts?.ready.then(run)
-    const ro = new ResizeObserver(() => {
-      // re-split when the block width changes (a modal opening, a viewport resize)
-      run()
-    })
+    // never split before the webfont is in: a fallback-metric split shrinks the box and can never recover
+    fontsReady().then(() => { ready = true; run() })
+    const ro = new ResizeObserver(() => run())
     ro.observe(el)
     return () => { cancelled = true; ro.disconnect() }
     // eslint-disable-next-line react-hooks/exhaustive-deps

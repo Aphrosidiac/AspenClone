@@ -3,6 +3,7 @@ import { useLayoutEffect, useRef, useState, type ElementType } from 'react'
 import { cx } from '../lib/cx'
 import { useIntro } from '../lib/intro'
 import { EASE_OUT, usePrefersReducedMotion } from '../lib/motion'
+import { fontsReady } from '../lib/fonts'
 
 /**
  * Lines of uppercase display type sized so the widest line exactly fills the container (`@container` + cqw),
@@ -29,8 +30,9 @@ export function ContainFit({ as: Tag = 'p', lines, className, lineClassName = 't
       probe.remove()
       setCqw(10000 / max)
     }
-    document.fonts?.ready.then(measure)
-    const ro = new ResizeObserver(measure); ro.observe(el)
+    let ready = false
+    fontsReady().then(() => { ready = true; measure() })
+    const ro = new ResizeObserver(() => { if (ready) measure() }); ro.observe(el)
     return () => ro.disconnect()
   }, [lines, lineClassName])
   return (

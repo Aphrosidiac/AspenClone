@@ -3,7 +3,7 @@ import { cx } from '../lib/cx'
 /** The `//FF` recognition mark, stacked square (slashes over the two identical Fs) — for tiles and the coin. */
 export function Mark({ className, title }: { className?: string; title?: string }) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" fill="none" className={className} aria-hidden={title ? undefined : true} role={title ? 'img' : undefined}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="16 6 64 72" fill="none" className={className} aria-hidden={title ? undefined : true} role={title ? 'img' : undefined}>
       {title && <title>{title}</title>}
       <g fill="currentColor">
         <g transform="translate(34.5 8) scale(.5 .3333)">
