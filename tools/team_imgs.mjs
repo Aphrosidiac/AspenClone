@@ -1,0 +1,4 @@
+import sharp from 'sharp';
+const A='docs/reference/2026-09-15/assets/';
+const map={ 'ben-herman':'fa4b699af304c0a34367428ad309bd14bc16699a-1536x1024.png','lira-aptekman':'9323703b796fed9cae6a750a2f02fb377984368e-1447x1087.png','tyler-guimaraes':'a1a1333de76fb2b9956fd07906dec52acc5b1c15-618x516.png','kunal-batra':'3dedfcc7fd604c30f42ed035357542b106f902b7-518x514.png','chris-demmel':'ceccef76e00a62a6a239aa367378db80865ee842-1254x1254.png','mike-leonard':'41ff53823df89f3f3cc58c68acd19f1318e57b06-1254x1254.png','mario-mlinaric':'d2daca672e27ee661c38cfe5cb5e4169b0f8c0f1-1254x1254.png','shawn-glabach':'f3b87f2487fff100d177ce92d873ff06d5df50dc-1254x1254.png'};
+for (const [k,v] of Object.entries(map)) { const m=await sharp(A+v).metadata(); await sharp(A+v).resize({width:1400,withoutEnlargement:true}).webp({quality:88}).toFile(`public/img/team/${k}.webp`); console.log(k,m.width,m.height,m.hasAlpha); }

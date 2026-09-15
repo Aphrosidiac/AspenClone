@@ -1,0 +1,9 @@
+# Aspen Search
+
+> Boutique executive search firm specializing in connecting top engineering and research talent with leading quantitative trading firms and venture-backed technology companies.
+
+Aspen Search focuses on highly specialized technical and quantitative roles, emphasizing fit between exceptional candidates and selective employers.
+
+## Pages
+
+- [Index](https://aspensearch.com/): Home page outlining Aspen Search’s executive search focus, target industries, and approach to matching technical talent with employers.
