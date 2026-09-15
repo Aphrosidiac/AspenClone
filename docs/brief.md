@@ -34,7 +34,7 @@
 
 ## Technical
 
-- **Repo:** `~/Desktop/dev/AspenClone` (local, private)
+- **Repo:** `~/Desktop/dev/AspenClone` → github.com/Aphrosidiac/AspenClone (public, pushed 2026-09-16)
 - **Stack:** Vite 8 + React 19 + TypeScript + Tailwind v4 (reference's own token vocabulary) + motion + lenis + three.
   Chosen because the reference is a React/framer-motion/lenis/three app and its Tailwind class vocabulary is
   visible in the hydrated DOM — reproducing behaviour in the same idiom is the shortest path to exactness.
@@ -48,6 +48,6 @@
 ## Gates
 
 - [x] Gate 1 — spec + tokens (docs/reference-spec.md) — proceeded without review per instruction
-- [ ] Gate 2 — hero + header complete at desktop + mobile
-- [ ] Gate 3 — full page + modals
-- [ ] Gate 4 — verification passes, parity ledger, honest close
+- [x] Gate 2 — hero + header complete at desktop + mobile (docs/qa/compare_v1)
+- [x] Gate 3 — full page + modals (docs/qa/compare_v3, compare_states_v2)
+- [x] Gate 4 — verification passes, parity ledger, honest close (docs/qa-log.md, docs/parity.md — 32/38 done)
