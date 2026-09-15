@@ -82,7 +82,7 @@ function splitIntoLines(el: HTMLElement, text: string): string[] {
   return lines
 }
 
-export function AnimatedText({ as: Tag = 'span', text, className, style, viewport = { margin: '0px 0px -10% 0px', amount: 0 }, delay = 0, stagger = 0.05, duration = 1.2, lineOffset = 0, onLines, immediate = false, id }: Props) {
+export function AnimatedText({ as: Tag = 'span', text, className, style, viewport = { margin: '0px', amount: 0 }, delay = 0, stagger = 0.065, duration = 1, lineOffset = 0, onLines, immediate = false, id }: Props) {
   const ref = useRef<HTMLElement>(null)
   const [lines, setLines] = useState<string[] | null>(null)
   const [done, setDone] = useState(false)
@@ -115,7 +115,7 @@ export function AnimatedText({ as: Tag = 'span', text, className, style, viewpor
   const total = (lines?.length ?? 0) + lineOffset
   useEffect(() => {
     if (!shouldReveal || !lines) return
-    const t = setTimeout(() => setDone(true), (delay + (total - 1) * stagger + duration) * 1000 + 50)
+    const t = setTimeout(() => setDone(true), (delay + (total - 1) * stagger + duration) * 1000 + 1400)
     return () => clearTimeout(t)
   }, [shouldReveal, lines, delay, total, stagger, duration])
 
@@ -133,8 +133,8 @@ export function AnimatedText({ as: Tag = 'span', text, className, style, viewpor
               data-line={i}
               translate="no"
               style={{ display: 'block', position: 'relative', whiteSpace: 'nowrap' }}
-              initial={resting ? false : { y: '100%' }}
-              animate={animateNow || resting ? { y: 0 } : { y: '100%' }}
+              initial={resting ? false : { y: '100%', opacity: 0 }}
+              animate={animateNow || resting ? { y: 0, opacity: 1 } : { y: '100%', opacity: 0 }}
               transition={{ duration, ease: EASE_OUT, delay: delay + (i + lineOffset) * stagger }}
             >
               {line}

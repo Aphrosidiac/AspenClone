@@ -60,7 +60,7 @@ async function desktop() {
   await page.click('#testimonials div.hidden.lg\\:grid button[aria-label="Next testimonial"]'); await page.waitForTimeout(900);
   const name1 = await page.textContent('#testimonials div.hidden.lg\\:grid .mt-auto p');
   check('testimonial next changes item', name0 !== name1, `${name0} -> ${name1}`);
-  await page.click('#testimonials div.hidden.lg\\:grid button[aria-label="Previous testimonial"]'); await page.waitForTimeout(900);
+  await page.click('#testimonials div.hidden.lg\\:grid button[aria-label="Previous testimonial"]'); await page.waitForTimeout(1500);
   check('testimonial prev returns', (await page.textContent('#testimonials div.hidden.lg\\:grid .mt-auto p')) === name0);
   // team slider
   await page.evaluate(() => document.querySelector('#team').scrollIntoView()); await page.waitForTimeout(1500);

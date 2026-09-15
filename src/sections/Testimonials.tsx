@@ -66,11 +66,11 @@ function Meta({ label, value, k }: { label: string; value: string; k: number }) 
   )
 }
 
-function Quote({ t, k, className }: { t: (typeof testimonials)[number]; k: number; className?: string }) {
+function Quote({ t, k, className, iconClassName }: { t: (typeof testimonials)[number]; k: number; className?: string; iconClassName?: string }) {
   return (
     <AnimatePresence mode="wait" initial={false}>
       <motion.div key={k} className={cx('contents', className)}>
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}><QuoteIcon /></motion.div>
+        <motion.div className={iconClassName} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}><QuoteIcon /></motion.div>
         <motion.div exit={{ opacity: 0, transition: { duration: 0.3 } }}>
           <AnimatedParagraphs paragraphs={t.text} className="text-headline-10" viewport={{ margin: '0px', amount: 0 }} />
         </motion.div>
@@ -100,7 +100,7 @@ export function Testimonials() {
         <div className="relative z-1 min-h-[calc(100svh-var(--site-header-height))] flex-col border-t bg-theme-bg flex lg:hidden">
           <div className="flex flex-1 flex-col px-12 py-24">
             <div className="mb-48 flex items-center justify-between"><Eyebrow>Testimonials</Eyebrow><Counter index={index} /></div>
-            <div className="mb-64"><Quote t={t} k={index} /></div>
+            <div className="mb-64"><Quote t={t} k={index} iconClassName="mb-24" /></div>
             <div className="mt-auto flex items-end justify-between gap-20">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div key={index} className="flex flex-col gap-8" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.5, ease: EASE_OUT }}>

@@ -5,7 +5,7 @@ import { ButtonLink } from './Button'
 import { AnalogClock } from './Clocks'
 import { Confetti } from './Confetti'
 import { NavLink } from './Header'
-import { ExternalIcon, Wordmark } from './Logo'
+import { ExternalIcon, Lockup } from './Logo'
 
 export function Footer() {
   const { show } = useModal()
@@ -34,7 +34,7 @@ export function Footer() {
       </div>
       <div className="grid grid-cols-1 lg:sticky lg:bottom-0 lg:grid-cols-2 lg:divide-x">
         <div className="order-2 flex min-h-200 flex-col gap-y-48 bg-theme-fg px-12 pt-48 pb-24 text-theme-bg lg:order-1 lg:p-20">
-          <Confetti><Wordmark className="m-auto h-auto w-[60%] lg:w-full lg:max-w-400" /></Confetti>
+          <Confetti><Lockup className="m-auto h-auto w-[60%] lg:w-full lg:max-w-400" /></Confetti>
           <div className="flex flex-col items-center gap-x-20 gap-y-8 font-mono text-caption-10 uppercase lg:flex-row lg:justify-between">
             <div className="flex flex-wrap items-center">
               <p className="whitespace-nowrap text-theme-bg/65">© {new Date().getFullYear()} {brand.longName}</p>
