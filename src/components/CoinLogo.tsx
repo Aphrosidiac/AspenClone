@@ -1,5 +1,6 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import { useLenis } from '../lib/lenis'
+import { useIntro } from '../lib/intro'
 import { cx } from '../lib/cx'
 
 /**
@@ -22,15 +23,16 @@ const tick = (t: number) => {
 export const kickCoin = (v: number) => { velocity = v }
 
 export function useCoinSpin(ref: React.RefObject<HTMLElement | null>) {
+  const { done } = useIntro()
   useEffect(() => {
     const el = ref.current
-    if (!el) return
+    if (!el || !done) return
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const fn = (deg: number) => { el.style.transform = `translateZ(1px) rotateY(${deg.toFixed(2)}deg)` }
     subs.add(fn)
     if (subs.size === 1) { lastT = 0; raf = requestAnimationFrame(tick) }
     return () => { subs.delete(fn); if (subs.size === 0) cancelAnimationFrame(raf) }
-  }, [ref])
+  }, [ref, done])
 }
 
 export function Coin({ children, className }: { children: ReactNode; className?: string }) {

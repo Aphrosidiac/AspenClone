@@ -63,3 +63,12 @@ and timers stalled there, so motion was measured headlessly instead (the tab the
 - Testimonial transition sampled: old lines exit upward (−100%, opacity 0) under the mask, meta blocks fade with an
   8 px translate — implemented via AnimatePresence exit on the line spans (`keepMask`).
 - Live pane checks: mint fluid trail on the dither, RGB-split/grid displacement on team photos, theme sweep.
+
+### Entrance re-measured frame by frame — `docs/reference/2026-09-15/entrance_rec.json`
+- Recorded the reference's overlay/wrapper styles every animation frame (page-side rAF, WebGL chunks delayed so the
+  main thread stays free). Result: phase 1 = 0.8 s ease-in-out(.87,0,.13,1), outer opacity 0→1 + scale .4→1;
+  phase 2 = 1.2 s, same ease, inner scale .3→1 **and** clip-path wipe together; the mark inside is the full-size
+  background logo (min(72vw,44rem), text-grey), so it lands exactly where the coin lives.
+- Our first implementation never scaled (imperative `animate()` on a motion element left `transform: none`);
+  rebuilt with motion values — the recorded trace now matches (43→108 px in 0.8 s, 108→360 px over the wipe).
+- Coin spin now starts after the entrance, as measured on the reference (0° during the overlay).
