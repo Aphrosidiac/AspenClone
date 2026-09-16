@@ -96,109 +96,68 @@
   ],
   "team": [
     {
-      "slug": "ben-herman",
-      "first": "Ben",
-      "last": "Herman",
+      "slug": "nur-aisyah-rahman",
+      "first": "Nur Aisyah",
+      "last": "Rahman",
       "role": "Founder & CEO",
-      "image": "/img/team/ben-herman.webp",
-      "email": "mailto:ben@ffdev.studio",
-      "linkedin": "https://www.linkedin.com/in/benherman/",
-      "calendly": "https://www.calendly.com/aspensearch",
+      "image": "/img/team/team-founder-ai.webp",
+      "email": "aisyah@ffdev.studio",
+      "linkedin": null,
+      "calendly": "https://calendly.com/ffdevstudio",
+      "fictional": true,
       "bio": [
-        "Ben Herman is the Founder of FF Dev Studio, the premier executive search firm for quantitative trading and technology talent. With over two decades of experience in recruiting, Ben has built a reputation as one of the most knowledgeable and results-driven talent partners in the industry.",
-        "Ben started his first executive search firm at 21 and never looked back. Over his career, he has personally billed $4.6M in a single year, generated over $150M in revenue from his first business, raised $96M from top-tier investors including Sequoia Capital, and angel invested in four unicorn companies. He has placed over 200 engineers and researchers at some of the most prestigious firms in quantitative finance, including Jane Street, Hudson River Trading, Two Sigma, PDT Partners, Citadel, and Headlands Technologies.",
-        "Today, Ben leads FF Dev Studio — formerly Herman Search — where he and his team focus on sourcing elite engineering, research, and AI talent for the world's top quantitative trading firms and VC-backed startups. His approach is built on deep relationships, radical honesty, and a genuine passion for connecting exceptional people with the right opportunities.",
-        "Outside of work, Ben is a proud dad of four, a devoted husband, and an avid collector of trading cards and sports memorabilia."
+        "Nur Aisyah Rahman is the founder and Chief Executive Officer of FF Dev Studio. She started the studio after a decade placing quantitative researchers and platform engineers, and still runs the searches that matter most herself — from the first conversation to the signed offer.",
+        "Before FF she led talent for a systematic trading desk in Kuala Lumpur and Singapore, where she learned that the best people are never on the market for long and rarely answer a cold message. That conviction shapes how the studio works: fewer searches, deeper relationships, honest advice.",
+        "This is a fictional profile created for a demonstration site. The photograph is AI-generated and does not depict a real person."
       ]
     },
     {
-      "slug": "lira-aptekman",
-      "first": "Lira",
-      "last": "Aptekman",
-      "role": "Talent Partner",
-      "image": "/img/team/lira-aptekman.webp",
-      "email": "mailto:lira@ffdev.studio",
-      "linkedin": "https://www.linkedin.com/in/lira-aptekman-a8ba1685/",
-      "calendly": "https://calendly.com/lira-aspen/30min",
+      "slug": "daniel-lim",
+      "first": "Daniel",
+      "last": "Lim",
+      "role": "Chief Operating Officer",
+      "image": "/img/team/team-partner-01-ai.webp",
+      "email": "daniel@ffdev.studio",
+      "linkedin": null,
+      "calendly": "https://calendly.com/ffdevstudio",
+      "fictional": true,
       "bio": [
-        "Lira has been with FF Dev Studio since day one, helping build and support the firm from the ground up. Over the past 11+ years, she has partnered with exceptional engineers, quantitative researchers, and technical leaders, helping them navigate some of the most important career decisions they'll make.Lira is known for her relationship-driven approach and believes the best recruiting happens when people are treated as long-term partners, not transactions. Her focus is on building genuine relationships, understanding what motivates people, and helping them find opportunities that align with their goals and ambitions."
+        "Daniel Lim is Chief Operating Officer at FF Dev Studio. He runs the engine behind every search: intake, research, interview logistics and offer negotiation, so that a candidate hears back the same day and a client always knows exactly where a search stands.",
+        "Daniel came to search from engineering management at a payments company, which is why infrastructure and execution teams tend to land on his desk.",
+        "This is a fictional profile created for a demonstration site. The photograph is AI-generated and does not depict a real person."
       ]
     },
     {
-      "slug": "tyler-guimaraes",
-      "first": "Tyler",
-      "last": "Guimaraes",
-      "role": "Talent Partner",
-      "image": "/img/team/tyler-guimaraes.webp",
-      "email": "mailto:tyler@ffdev.studio",
-      "linkedin": "https://www.linkedin.com/in/tyler-guimaraes/",
-      "calendly": "https://calendly.com/tyler-aspensearch/30min",
+      "slug": "priya-raghavan",
+      "first": "Priya",
+      "last": "Raghavan",
+      "role": "Chief People Officer",
+      "image": "/img/team/team-partner-02-ai.webp",
+      "email": "priya@ffdev.studio",
+      "linkedin": null,
+      "calendly": "https://calendly.com/ffdevstudio",
+      "fictional": true,
       "bio": [
-        "As a member of FF’s founding recruiting team, Tyler has spent the last seven years helping build teams at some of the most respected firms in Big Tech and quantitative finance. From elite software engineers and machine learning researchers to technical leaders and quantitative talent, he has partnered with industry-leading organizations to bring exceptional people to already exceptional teams.Known for his straightforward Southern California communication style, Tyler believes the best recruiting relationships are built on honesty. He'll tell you when you're doing everything right, when you're making a mistake, and when there's a better path forward. Candidates and clients alike value him not just as a recruiter, but as a trusted advisor who provides candid feedback, market insight, and long-term perspective.While much of the recruiting industry is focused on the next transaction, Tyler focuses on building relationships that last. His goal isn't simply to fill a role; it's to become the person people call when they're evaluating a career move, building a team, or looking for a trusted perspective on the market.Whether you're hiring world-class talent or exploring your next opportunity, Tyler believes great outcomes start with great relationships."
+        "Priya Raghavan is Chief People Officer at FF Dev Studio. She leads candidate relationships across research and AI — the long conversations about where someone should spend the next five years, and what a fund or a lab will actually feel like from the inside.",
+        "Priya spent eight years in research recruiting for a multi-strategy fund before joining FF, and has placed heads of research, founding ML hires and entire desk buildouts.",
+        "This is a fictional profile created for a demonstration site. The photograph is AI-generated and does not depict a real person."
       ]
     },
     {
-      "slug": "kunal-batra",
-      "first": "Kunal",
-      "last": "Batra",
-      "role": "Talent Partner",
-      "image": "/img/team/kunal-batra.webp",
-      "email": "mailto:kunal@ffdev.studio",
-      "linkedin": "https://www.linkedin.com/in/kunal-batra-104678175/",
-      "calendly": "https://calendly.com/kunal-aspensearch/30min-1",
+      "slug": "adam-hakim",
+      "first": "Adam",
+      "last": "Hakim",
+      "role": "Chief Technology Officer",
+      "image": "/img/team/team-partner-03-ai.webp",
+      "email": "adam@ffdev.studio",
+      "linkedin": null,
+      "calendly": "https://calendly.com/ffdevstudio",
+      "fictional": true,
       "bio": [
-        "Kunal Batra is a founding team member at FF, where he specializes in placing elite quantitative engineers and researchers with top-tier trading firms and select high-growth startups. He brings a rare combination of deep industry relationships and data-driven insight to every search — giving candidates a genuine edge throughout the interview process.Before FF, Kunal spent over three years at Long Ridge Partners building his expertise in quant and hedge fund talent. To date, he has completed more than 50 successful placements across the quant finance space, with a track record that speaks to both his network and his ability to match exceptional people with the right opportunities.Kunal holds a B.S. in Business and Communications from Penn State. Outside of work, he's an avid sports fan, concert-goer, and active trader across equities, futures, and crypto."
+        "Adam Hakim is Chief Technology Officer at FF Dev Studio. A former low-latency C++ engineer, he owns the technical read on every engineering search — which stacks a candidate has genuinely built on, and which teams will stretch them.",
+        "He also builds the studio’s own tooling, from the research pipeline to the site you are looking at.",
+        "This is a fictional profile created for a demonstration site. The photograph is AI-generated and does not depict a real person."
       ]
-    },
-    {
-      "slug": "chris-demmel",
-      "first": "Chris",
-      "last": "Demmel",
-      "role": "Talent Partner",
-      "image": "/img/team/chris-demmel.webp",
-      "email": "mailto:chris@ffdev.studio",
-      "linkedin": "https://www.linkedin.com/in/chrisdemmel/",
-      "calendly": "https://calendly.com/aspensearch2",
-      "bio": [
-        "Chris is a Senior Recruiter with over 12 years of experience in recruiting. He started at an agency in Seattle focused on startups, then landed his first big tech job at Facebook. He recruited E7 engineers across both NYC and Seattle and went on to work with mid to late stage startups where he has recruited for all types of roles.That journey eventually led him to a chance introduction to industry legend Ben Herman, who pulled him into the quant trading world. Now a Senior Recruiter at FF Dev Studio, Chris focuses exclusively on top quant trading firms globally. He brings a deep, firsthand relationship with firms like EQR and a track record of successful placements there.His approach is simple: honesty and transparency above all. He gives real feedback and genuinely tries to add value, not just fill seats.Based in Portland, hiring for NYC. He likes all the regular PNW stuff like backpacking, food carts, and musical theatre."
-      ]
-    },
-    {
-      "slug": "mike-leonard",
-      "first": "Mike",
-      "last": "Leonard",
-      "role": "Talent Partner",
-      "image": "/img/team/mike-leonard.webp",
-      "email": "mailto:mike@ffdev.studio",
-      "linkedin": "https://www.linkedin.com/in/leonard-mike/",
-      "calendly": "https://meet.goodtime.io/w/aspensearchcom/mike/30-min-video/intro?s=ce",
-      "bio": [
-        "Mike brings more than 15 years of technical recruiting experience, partnering with high-growth technology companies to identify and attract specialized engineering, research, and technical leadership talent. His work has included building technical leadership teams at Robinhood, research leadership at Cruise, and supporting Amazon’s most ambitious early-stage initiatives across AI, robotics, and autonomous systems. He has since specialized in partnering with frontier AI labs and venture-backed startups, helping founders and technical leaders build foundational teams across AI/ML Research and engineering. His work continues to focus on specialized talent for companies building at the earliest and most consequential stages of emerging technology."
-      ]
-    },
-    {
-      "slug": "mario-mlinaric",
-      "first": "Mario",
-      "last": "Mlinaric",
-      "role": "Talent Partner",
-      "image": "/img/team/mario-mlinaric.webp",
-      "email": "mailto:mario@ffdev.studio",
-      "linkedin": "https://www.linkedin.com/in/myquantrecruiter/",
-      "calendly": "https://calendar.app.google/LHjRvVmamcS65tUk6",
-      "bio": [
-        "Mario began his career on the buy side as a Trading Analyst at First Eagle Investment Management, where he supported market research and trade execution for the Global Value team of portfolio managers overseeing approximately $90 billion in assets. He later transitioned into specialized quantitative research and trading recruitment, focusing on systematic strategies, statistical arbitrage, high-frequency alpha, and options automated market making. He built his expertise at firms including Options Group and Carrington Fox before joining FF Dev Studio. Mario holds a double major in Economics and Psychology from Rutgers University"
-      ]
-    },
-    {
-      "slug": "shawn-glabach",
-      "first": "Shawn",
-      "last": "Glabach",
-      "role": "Talent Partner",
-      "image": "/img/team/shawn-glabach.webp",
-      "email": "mailto:shawn@ffdev.studio",
-      "linkedin": "https://www.linkedin.com/in/shawn-glabach/",
-      "calendly": "https://calendly.com/sglabach/position_conversation",
-      "bio": []
     }
   ]
 }

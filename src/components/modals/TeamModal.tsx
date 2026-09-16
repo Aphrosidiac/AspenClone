@@ -1,4 +1,4 @@
-import { team, type TeamMember } from '../../data/site'
+import { displayName, team, type TeamMember } from '../../data/site'
 import { AnimatedParagraphs, AnimatedText } from '../AnimatedText'
 import { ButtonLink } from '../Button'
 import { Dither } from '../Dither'
@@ -21,7 +21,7 @@ function Member({ m }: { m: TeamMember }) {
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="order-2 flex flex-col lg:order-1">
-            <div className="bg-theme-fg px-12 pt-52 pb-20 text-theme-bg lg:px-20"><h2 className="text-body-20"><AnimatedText text={`${m.first}\n${m.last}`} viewport={false} /></h2></div>
+            <div className="bg-theme-fg px-12 pt-52 pb-20 text-theme-bg lg:px-20"><h2 className="text-body-20"><AnimatedText text={displayName(m)} viewport={false} suffix={m.fictional ? <span className="ml-[1ch] font-mono text-caption-10 uppercase opacity-60 whitespace-nowrap">(fictional)</span> : null} /></h2></div>
             <div className="flex flex-1 flex-col">
               <div className="relative isolate aspect-[1.5] flex-1 lg:aspect-auto">
                 <div className="pointer-events-none absolute inset-0 z-0"><Dither /></div>

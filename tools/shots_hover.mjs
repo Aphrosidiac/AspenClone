@@ -16,7 +16,7 @@ await clip('client_row', 'ul[aria-label="Clients"] li:nth-child(4) button', 4);
 await page.screenshot({ path: `${OUT}/clients_hover_full.png` });
 await page.evaluate(() => document.querySelector('#team').scrollIntoView()); await page.waitForTimeout(1500);
 await page.evaluate(() => window.scrollBy(0, 400)); await page.waitForTimeout(1500);
-await clip('team_card', 'button[aria-label="Lira Aptekman"]', 0, 1200);
+await clip('team_card', 'button[aria-label="Daniel Lim"]', 0, 1200);
 await page.screenshot({ path: `${OUT}/team_hover_full.png` });
 await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight)); await page.waitForTimeout(1200);
 await clip('footer_cta', 'footer button.group', 0, 1000);

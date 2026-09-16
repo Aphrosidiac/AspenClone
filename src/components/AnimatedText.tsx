@@ -1,5 +1,5 @@
 import { motion, useInView } from 'motion/react'
-import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ElementType } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ElementType, type ReactNode } from 'react'
 import { cx } from '../lib/cx'
 import { useIntro } from '../lib/intro'
 import { EASE_OUT, usePrefersReducedMotion } from '../lib/motion'
@@ -28,6 +28,8 @@ type Props = {
   id?: string
   /** keep the line masks clipped at rest so an AnimatePresence exit (lines rising out) stays masked */
   keepMask?: boolean
+  /** rendered inline at the end of the last line (a small marker that must not add a line) */
+  suffix?: ReactNode
 }
 
 function splitIntoLines(el: HTMLElement, text: string): string[] {
@@ -84,7 +86,7 @@ function splitIntoLines(el: HTMLElement, text: string): string[] {
   return lines
 }
 
-export function AnimatedText({ as: Tag = 'span', text, className, style, viewport = { margin: '0px', amount: 0 }, delay = 0, stagger = 0.065, duration = 1, lineOffset = 0, onLines, immediate = false, id, keepMask = false }: Props) {
+export function AnimatedText({ as: Tag = 'span', text, className, style, viewport = { margin: '0px', amount: 0 }, delay = 0, stagger = 0.065, duration = 1, lineOffset = 0, onLines, immediate = false, id, keepMask = false, suffix }: Props) {
   const ref = useRef<HTMLElement>(null)
   const [lines, setLines] = useState<string[] | null>(null)
   const [done, setDone] = useState(false)
@@ -140,7 +142,7 @@ export function AnimatedText({ as: Tag = 'span', text, className, style, viewpor
               exit={{ y: '-100%', opacity: 0, transition: { duration: 0.6, ease: EASE_OUT, delay: (i + lineOffset) * 0.03 } }}
               transition={{ duration, ease: EASE_OUT, delay: delay + (i + lineOffset) * stagger }}
             >
-              {line}
+              {line}{suffix && i === lines.length - 1 ? suffix : null}
             </motion.span>
           </span>
         ))

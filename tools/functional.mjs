@@ -65,14 +65,14 @@ async function desktop() {
   check('testimonial prev returns', (await page.textContent('#testimonials div.hidden.lg\\:grid .mt-auto p')) === name0);
   // team slider
   await page.evaluate(() => document.querySelector('#team').scrollIntoView()); await page.waitForTimeout(1500);
-  const sl0 = await page.$eval('#team [style*="--card-basis"]', (e) => e.scrollLeft);
-  await page.click('button[aria-label="Next team members"]'); await page.waitForTimeout(1200);
-  const sl1 = await page.$eval('#team [style*="--card-basis"]', (e) => e.scrollLeft);
-  check('team next scrolls slider', sl1 > sl0, `${sl0} -> ${sl1}`);
-  check('team prev enabled after scroll', !(await page.$eval('button[aria-label="Previous team members"]', (b) => b.disabled)));
-  await page.click('button[aria-label="Lira Aptekman"]'); await page.waitForTimeout(1500);
-  check('team modal opens', !!(await page.$('[data-modal=lira-aptekman]')));
-  check('team modal has bio + calendly', (await page.textContent('[data-modal=lira-aptekman]')).includes('Bio') && !!(await page.$('[data-modal=lira-aptekman] a[href*="calendly"]')));
+  // four cards fill one viewport: both slider controls stay disabled (they enable when content overflows)
+  const canScroll = await page.$eval('#team [style*="--card-basis"]', (e) => e.scrollWidth > e.clientWidth + 1);
+  const nextDisabled = await page.$eval('button[aria-label="Next team members"]', (b) => b.disabled);
+  check('team slider controls reflect overflow', canScroll ? !nextDisabled : nextDisabled, `canScroll=${canScroll} nextDisabled=${nextDisabled}`);
+  check('team prev disabled at start', await page.$eval('button[aria-label="Previous team members"]', (b) => b.disabled));
+  await page.click('button[aria-label="Daniel Lim"]'); await page.waitForTimeout(1500);
+  check('team modal opens', !!(await page.$('[data-modal=daniel-lim]')));
+  check('team modal has bio + calendly', (await page.textContent('[data-modal=daniel-lim]')).includes('Bio') && !!(await page.$('[data-modal=daniel-lim] a[href*="calendly"]')));
   await page.keyboard.press('Escape'); await page.waitForTimeout(1200);
   // theme
   await page.click('header button[aria-label="Toggle theme"]'); await page.waitForTimeout(1800);

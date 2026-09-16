@@ -15,7 +15,7 @@ const esc = async (p) => { await p.keyboard.press('Escape'); await p.waitForTime
 await run(1440, 900, 'd', [
   ['contact', async (p) => p.click('header button:has-text("Contact")')],
   ['contact_scrolled', async (p) => p.mouse.wheel(0, 600)],
-  ['team_ben', async (p) => { await esc(p); await p.evaluate(() => document.querySelector('#team').scrollIntoView()); await p.waitForTimeout(1500); await p.click('button[aria-label="Ben Herman"]') }],
+  ['team_ben', async (p) => { await esc(p); await p.evaluate(() => document.querySelector('#team').scrollIntoView()); await p.waitForTimeout(1500); await p.click('button[aria-label="Nur Aisyah Rahman"]') }],
   ['team_ben_scrolled', async (p) => p.mouse.wheel(0, 700)],
   ['privacy', async (p) => { await esc(p); await p.evaluate(() => window.scrollTo(0, document.body.scrollHeight)); await p.waitForTimeout(1500); await p.click('footer button:has-text("Privacy Policy")') }],
   ['dark', async (p) => { await esc(p); await p.evaluate(() => window.scrollTo(0, 0)); await p.waitForTimeout(800); await p.click('header button[aria-label="Toggle theme"]'); await p.waitForTimeout(1500) }],
@@ -25,6 +25,6 @@ await run(1440, 900, 'd', [
 await run(390, 844, 'm', [
   ['menu', async (p) => p.click('header button[aria-controls]')],
   ['contact', async (p) => { await p.click('#' + (await p.getAttribute('header button[aria-controls]', 'aria-controls')).replace(/[^a-zA-Z0-9_-]/g, '\\$&') + ' button'); }],
-  ['team_ben', async (p) => { await esc(p); await p.evaluate(() => document.querySelector('#team').scrollIntoView()); await p.waitForTimeout(1500); await p.click('button[aria-label="Ben Herman"]') }],
+  ['team_ben', async (p) => { await esc(p); await p.evaluate(() => document.querySelector('#team').scrollIntoView()); await p.waitForTimeout(1500); await p.click('button[aria-label="Nur Aisyah Rahman"]') }],
 ]);
 await browser.close();

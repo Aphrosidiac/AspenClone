@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { team } from '../data/site'
+import { displayName, team } from '../data/site'
 import { useModal } from '../lib/modal'
 import { AnimatedParagraphs, AnimatedText } from '../components/AnimatedText'
 import { buttonClass } from '../components/Button'
@@ -107,7 +107,7 @@ export function Team() {
                 <button type="button" aria-label={`${m.first} ${m.last}`} onClick={() => show(m.slug)}
                   className={cx(buttonClass({ variant: 'mint', size: 'none', bare: true }), 'peer absolute inset-x-0 bottom-0 z-1 block h-auto w-full px-12 pt-52 pb-20 font-sans text-body-20 normal-case lg:px-20')}>
                   <span data-inner="true" className="relative z-10 flex w-full min-w-0 flex-row items-center justify-between gap-8">
-                    <AnimatedText text={`${m.first}\n${m.last}`} />
+                    <AnimatedText text={displayName(m)} suffix={m.fictional ? <span className="ml-[1ch] font-mono text-caption-10 uppercase opacity-60 whitespace-nowrap">(fictional)</span> : null} />
                     <ArrowIcon />
                   </span>
                 </button>

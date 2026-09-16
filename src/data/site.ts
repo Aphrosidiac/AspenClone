@@ -77,6 +77,7 @@ export type Testimonial = (typeof content.testimonials)[number]
 export const testimonials = content.testimonials
 
 export type TeamMember = (typeof content.team)[number]
+export const displayName = (m: TeamMember) => `${m.first}\n${m.last}`
 export const team = {
   eyebrow: "Who you'll actually work with",
   title: 'Team',
