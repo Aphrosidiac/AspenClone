@@ -1,96 +1,96 @@
 {
   "testimonials": [
     {
-      "name": "Catherine Sun",
+      "name": "Mei Lin Chong",
       "role": "Senior Software Engineer",
-      "company": "Citadel EQR",
+      "company": "Halvard Quantitative",
       "position": "Quantitative Developer",
-      "image": "/img/testimonials/catherine-sun.jpg",
+      "image": "/img/testimonials/mei-lin-chong.jpg",
       "text": [
-        "Ben helped me get my dream job. My whole work experience had been in big tech, and I could tell that there is a different style of interviewing, communicating, and culture in quant. They were very hands on with prepping me for the interviews, I always felt prepared and confident because of their support.",
-        "They were so on top of things that I found out I was getting an offer the night of my onsite interview.",
-        "Most importantly, I believe they are honest and transparent people. For example, I had a health issue come up when my onsite interview had already been booked. They swiftly communicated with the company and rescheduled my onsite. It was the right decision as I got an offer while still prioritizing my health.",
-        "Thank you for my life changing opportunity!"
+        "Aisyah helped me land the role I'd been circling for years. My whole career had been in big tech, and I could tell that quant firms interview, communicate, and run their teams differently. She was hands-on prepping me for every round, so I walked in feeling prepared and confident instead of guessing.",
+        "They were so on top of things that I found out I was getting an offer the same night as my onsite.",
+        "Most importantly, they are honest people. A health issue came up after my onsite had already been booked; Aisyah spoke to the firm straight away and had it rescheduled. It was the right call — I still got the offer without putting my health second.",
+        "Thank you for a genuinely life-changing opportunity!"
       ]
     },
     {
-      "name": "Max D",
+      "name": "Amir Hakimi",
       "role": "Senior Software Engineer",
-      "company": "Citadel EQR",
+      "company": "Halvard Quantitative",
       "position": "Quantitative Developer",
-      "image": "/img/testimonials/max-d.png",
+      "image": "/img/testimonials/amir-hakimi.png",
       "text": [
-        "Ben is in a league of his own as a recruiter. An industry veteran with deep connections, he knew exactly which firms were the right fit for me, guided me throughout the entire interview process, and helped me negotiate an offer at Citadel. If you’re exploring roles in quant finance or tech, Ben is the person to talk to."
+        "Aisyah is in a league of her own as a recruiter. She's been in the industry long enough to know exactly which firms would be the right fit for me, guided me through every interview round, and helped me negotiate the offer at Halvard. If you're exploring roles in quant finance or tech, she's the person to talk to."
       ]
     },
     {
-      "name": "Roy Xiong",
+      "name": "Arjun Menon",
       "role": "Software Engineer",
-      "company": "Two Sigma",
+      "company": "Northline Trading",
       "position": "Software Engineer",
-      "image": "/img/testimonials/roy-xiong.jpg",
+      "image": "/img/testimonials/arjun-menon.jpg",
       "text": [
-        "10/10 experience with Tyler! Never had a recruiter work with me the way he did. Helped me find the firms that made the most sense for where I wanted to take my career, helped me prepare for the interview process, and made sure I got the compensation package that I needed. Would recommend everyone to work with Tyler."
+        "10/10 experience with Daniel. I've never had a recruiter work with me the way he did — he narrowed the search to the firms that actually made sense for where I wanted my career to go, prepped me for each stage, and made sure the compensation package was what I needed. I'd tell anyone to work with him."
       ]
     },
     {
-      "name": "Alex Mott",
+      "name": "Farid Zulkifli",
       "role": "Quant Researcher",
-      "company": "Syntria",
+      "company": "Vantara Labs",
       "position": "ML Researcher",
-      "image": "/img/testimonials/alex-mott.jpg",
+      "image": "/img/testimonials/farid-zulkifli.jpg",
       "text": [
-        "I had a great experience working with Tyler. He introduced me to a variety of firms including some I never would have found on my own. I just started my new job at a startup that Tyler introduced me to, and it is exactly what I was looking for. He was on top of the process from start to finish, from introductions and prep to discussing offer negotiations and keeping on top of the contract. I highly recommend working with him."
+        "I had a great experience working with Daniel. He introduced me to a range of firms, including a few I'd never have found on my own. I've just started at a startup he put me in front of, and it's exactly what I was looking for. He stayed on top of the process from start to finish — introductions, prep, offer negotiation, even chasing the contract. Highly recommended."
       ]
     },
     {
-      "name": "Junyoung Kim",
+      "name": "Jason Teoh",
       "role": "Lead Software Engineer",
-      "company": "Citadel GQS",
+      "company": "Halvard Systematic",
       "position": "Quantitative Engineer",
-      "image": "/img/testimonials/junyoung-kim.jpg",
+      "image": "/img/testimonials/jason-teoh.jpg",
       "text": [
-        "Working with Kunal was a genuine pleasure. He takes the time to understand what you truly want, and his tenacity is unmatched. He kept digging until he uncovered an opportunity that was perfect for me. Thoughtful, relentless, and exceptional at his craft."
+        "Working with Priya was a genuine pleasure. She takes the time to understand what you actually want, and her persistence is unmatched — she kept digging until she uncovered an opportunity that fit me perfectly. Thoughtful, relentless, and exceptional at her craft."
       ]
     },
     {
-      "name": "Colman Seery",
+      "name": "Vikram Nair",
       "role": "Quantitative Engineer",
-      "company": "Syntria",
+      "company": "Vantara Labs",
       "position": "Quantitative Engineer",
-      "image": "/img/testimonials/colman-seery.jpg",
+      "image": "/img/testimonials/vikram-nair.jpg",
       "text": [
-        "Lira’s great! She helped narrow my search to trading firms I’d actually be interested in and would not have known about otherwise, had a ton of valuable connections, and provided specific insight at every step of the process. She was responsive, but didn’t call at 7 or 8am like many recruiters in the space. Highly recommend working with her."
+        "Priya's great. She narrowed my search to trading firms I'd actually be interested in and wouldn't have known about otherwise, had a ton of useful connections, and gave specific insight at every step. Responsive too — but she never called at 7am the way a lot of recruiters in this space do. Highly recommend working with her."
       ]
     },
     {
-      "name": "Ryan Tan",
+      "name": "Wei Jun Lau",
       "role": null,
-      "company": "Citadel EQR",
+      "company": "Halvard Quantitative",
       "position": "Quantitative Developer",
-      "image": "/img/testimonials/ryan-tan.jpg",
+      "image": "/img/testimonials/wei-jun-lau.jpg",
       "text": [
-        "Chris's mission is putting the most capable people in the highest leverage positions. It's all too familiar for him, because he himself is the most capable person in the recruiting space I've ever met. But what made Chris great to work with wasn't just his access to some of the most successful and prestigious firms, or his connections and knowledge that made the processes extremely smooth. It was his humility and unending support through every step of the way, a rare experience for me when it comes to recruiters."
+        "Adam's mission is putting the most capable people in the highest-leverage seats, and he happens to be the most capable person I've met in recruiting. What made him great to work with wasn't just his access to the strongest firms or the connections that made every process smooth. It was his humility and steady support through every step — a rare thing when it comes to recruiters."
       ]
     },
     {
-      "name": "Scott Taver",
+      "name": "Kelvin Ooi",
       "role": "Senior Software Engineer",
       "company": "AI Start Up",
       "position": "Staff Engineer",
-      "image": "/img/testimonials/scott-taver.jpg",
+      "image": "/img/testimonials/kelvin-ooi.jpg",
       "text": [
-        "Arsen was foundational in helping me land my next successful role in engineering. After getting connected he took into account my experience, expertise and desires and routed me effectively to a few different options that all led to screenings. Along the way I greatly appreciated the touchpoints, encouragement and collaboration that led to me choosing a fulfilling role that I would not have come across as I struggled in my own shotgun approach to job searching. It was instrumental to have this support in todays job search."
+        "Adam was foundational in helping me land my next role in engineering. Once we connected he took my experience, expertise and what I actually wanted into account and routed me to a few options that all turned into screenings. Along the way I really appreciated the check-ins, encouragement and collaboration that led to a fulfilling role I would never have found with my own scattershot approach. Having that support in today's job market was instrumental."
       ]
     },
     {
-      "name": "Manik Sethi",
+      "name": "Hafiz Rosli",
       "role": "ML Engineer",
-      "company": "Mercor",
+      "company": "Corvid AI",
       "position": "AI Engineer",
-      "image": "/img/testimonials/manik-sethi.jpg",
+      "image": "/img/testimonials/hafiz-rosli.jpg",
       "text": [
-        "Arsen is incredibly helpful, going to long lengths to make sure that you are well equipped and prepared for the interview process. With his help and support, I am now working as an Applied AI Engineer at Mercor!"
+        "Adam is incredibly helpful, going to great lengths to make sure you're properly equipped for the interview process. With his help and support, I'm now working as an Applied AI Engineer at Corvid AI!"
       ]
     }
   ],
