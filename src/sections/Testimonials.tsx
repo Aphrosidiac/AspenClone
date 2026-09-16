@@ -66,6 +66,17 @@ function Meta({ label, value, k }: { label: string; value: string; k: number }) 
   )
 }
 
+const NOTE = 'These are fictional people and companies. FF Search is a demonstration site built by FF Dev Studio; no testimonial here describes a real engagement.'
+
+function Note({ className = '' }: { className?: string }) {
+  return (
+    <div className={`flex flex-col gap-8 ${className}`}>
+      <p className="font-medium text-caption-20">Note</p>
+      <p className="font-mono text-caption-10 uppercase opacity-60 leading-[1.5]">{NOTE}</p>
+    </div>
+  )
+}
+
 function Quote({ t, k, className, iconClassName }: { t: (typeof testimonials)[number]; k: number; className?: string; iconClassName?: string }) {
   return (
     <AnimatePresence mode="wait" initial={false}>
@@ -114,6 +125,7 @@ export function Testimonials() {
           <div className="grid grid-cols-2 gap-20 bg-theme-fg p-20 text-theme-bg">
             <Meta label="Position" value={t.position} k={index} />
             <Meta label="Company" value={t.company} k={index} />
+            <Note className="col-span-2" />
           </div>
           <Controls tick={tick} onPrev={prev} onNext={next} />
         </div>
@@ -145,6 +157,7 @@ export function Testimonials() {
               <div className="flex h-full flex-col gap-20 p-20">
                 <Meta label="Position" value={t.position} k={index} />
                 <Meta label="Company" value={t.company} k={index} />
+                <Note />
               </div>
             </div>
             <div className="relative h-full overflow-hidden"><div className="absolute inset-0"><Dither /></div></div>
