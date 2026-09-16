@@ -1,7 +1,8 @@
-# FF Search
+# FF Dev Studio demo (AspenClone)
 
-FF Dev Studio's executive-search site — a 1:1 rebuild of [aspensearch.com](https://www.aspensearch.com/)
-under our own `//FF` mark. Vite 8 + React 19 + Tailwind v4 (the reference's own token vocabulary) + motion +
+A 1:1 layout/motion rebuild of [aspensearch.com](https://www.aspensearch.com/) under our own `//FF` mark, with
+all copy rewritten to describe FF Dev Studio (websites, web apps, automation, care plans). Demo site: the team,
+testimonials and client/hire logos are fictional or placeholders and say so in-page. Vite 8 + React 19 + Tailwind v4 (the reference's own token vocabulary) + motion +
 Lenis + three (raw; own fluid sim and shader planes).
 
 ```bash

@@ -41,9 +41,9 @@ function UploadCv() {
   return (
     <form className="relative flex min-h-400 flex-col bg-theme-fg text-theme-bg" onSubmit={(e) => e.preventDefault()} onDragOver={(e) => { e.preventDefault(); setState((s) => (s.kind === 'idle' ? { kind: 'over' } : s)) }} onDragLeave={() => setState((s) => (s.kind === 'over' ? { kind: 'idle' } : s))} onDrop={onDrop}>
       <input autoComplete="off" tabIndex={-1} aria-hidden="true" className="pointer-events-none absolute -left-[9999px] -z-1 h-px w-px overflow-hidden opacity-0" type="text" name="website" />
-      <h2 className="px-12 pt-20 text-headline-20 lg:px-20">Upload CV</h2>
+      <h2 className="px-12 pt-20 text-headline-20 lg:px-20">Upload a brief</h2>
       <input ref={input} accept={ACCEPT} className="sr-only" tabIndex={-1} aria-hidden="true" type="file" name="cv" onChange={(e) => take(e.target.files?.[0])} />
-      <button type="button" aria-label="Upload CV: drag and drop a file or click to browse" onClick={() => input.current?.click()}
+      <button type="button" aria-label="Upload a brief: drag and drop a file or click to browse" onClick={() => input.current?.click()}
         className={cx('group flex flex-1 flex-col items-center justify-center gap-12 px-12 py-40 text-center outline-none transition-opacity duration-200 ease-out focus-visible:bg-theme-bg/5 disabled:cursor-default lg:px-20', state.kind === 'over' && 'bg-theme-bg/5')}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 28 28" aria-hidden="true" className="shrink-0 size-40 transition-transform duration-300 ease-out group-hover:-translate-y-4">
           <path fill="currentColor" d="M2 1h24v1.5H2V1Zm12 5.2 8.4 8.4-1.06 1.06L14.75 9.07V27h-1.5V9.07l-6.59 6.59L5.6 14.6 14 6.2Z" />

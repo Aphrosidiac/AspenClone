@@ -2,95 +2,95 @@
   "testimonials": [
     {
       "name": "Mei Lin Chong",
-      "role": "Senior Software Engineer",
-      "company": "Halvard Quantitative",
-      "position": "Quantitative Developer",
+      "role": "Founder",
+      "company": "Halvard Bakehouse",
+      "position": "Owner",
       "image": "/img/testimonials/mei-lin-chong.jpg",
       "text": [
-        "Aisyah helped me land the role I'd been circling for years. My whole career had been in big tech, and I could tell that quant firms interview, communicate, and run their teams differently. She was hands-on prepping me for every round, so I walked in feeling prepared and confident instead of guessing.",
-        "They were so on top of things that I found out I was getting an offer the same night as my onsite.",
-        "Most importantly, they are honest people. A health issue came up after my onsite had already been booked; Aisyah spoke to the firm straight away and had it rescheduled. It was the right call — I still got the offer without putting my health second.",
-        "Thank you for a genuinely life-changing opportunity!"
+        "Aisyah built the site I'd been putting off for years. My whole experience with agencies had been three people in every meeting and nobody who could answer a technical question. Here the person I briefed was the person who built it, and it showed in every decision.",
+        "They were so on top of things that the first working version was in my inbox the week after we spoke.",
+        "Most importantly, they are honest people. Halfway through I asked for a booking feature that would have blown the budget; Aisyah talked me out of it and showed me a simpler route that does the job. It was the right call.",
+        "Thank you for a site I'm genuinely proud to send people to!"
       ]
     },
     {
       "name": "Amir Hakimi",
-      "role": "Senior Software Engineer",
-      "company": "Halvard Quantitative",
-      "position": "Quantitative Developer",
+      "role": "Co-founder",
+      "company": "Halvard Bakehouse",
+      "position": "Co-founder",
       "image": "/img/testimonials/amir-hakimi.png",
       "text": [
-        "Aisyah is in a league of her own as a recruiter. She's been in the industry long enough to know exactly which firms would be the right fit for me, guided me through every interview round, and helped me negotiate the offer at Halvard. If you're exploring roles in quant finance or tech, she's the person to talk to."
+        "Aisyah is in a league of her own as a builder. She understood our business in one conversation, designed something that looks nothing like a template, and had it live before the agency we'd spoken to had sent a quote. If you're a small team that needs a proper website, she's the person to talk to."
       ]
     },
     {
       "name": "Arjun Menon",
-      "role": "Software Engineer",
+      "role": "Operations Lead",
       "company": "Northline Trading",
-      "position": "Software Engineer",
+      "position": "Operations Lead",
       "image": "/img/testimonials/arjun-menon.jpg",
       "text": [
-        "10/10 experience with Daniel. I've never had a recruiter work with me the way he did — he narrowed the search to the firms that actually made sense for where I wanted my career to go, prepped me for each stage, and made sure the compensation package was what I needed. I'd tell anyone to work with him."
+        "10/10 experience with Daniel. I've never had a developer work with me the way he did — he scoped the order dashboard to exactly what our team needed, kept me updated at every stage, and launched it without a single day of downtime for us. I'd tell anyone to work with him."
       ]
     },
     {
       "name": "Farid Zulkifli",
-      "role": "Quant Researcher",
+      "role": "Founder",
       "company": "Vantara Labs",
-      "position": "ML Researcher",
+      "position": "Founder",
       "image": "/img/testimonials/farid-zulkifli.jpg",
       "text": [
-        "I had a great experience working with Daniel. He introduced me to a range of firms, including a few I'd never have found on my own. I've just started at a startup he put me in front of, and it's exactly what I was looking for. He stayed on top of the process from start to finish — introductions, prep, offer negotiation, even chasing the contract. Highly recommended."
+        "I had a great experience working with Daniel. He turned a spreadsheet we'd outgrown into a proper internal tool, including a few workflows I hadn't even thought to ask for. We've been running on it every day since launch. He stayed on top of the process from start to finish — scoping, staging, training the team, even chasing our domain provider. Highly recommended."
       ]
     },
     {
       "name": "Jason Teoh",
-      "role": "Lead Software Engineer",
+      "role": "Managing Director",
       "company": "Halvard Systematic",
-      "position": "Quantitative Engineer",
+      "position": "Managing Director",
       "image": "/img/testimonials/jason-teoh.jpg",
       "text": [
-        "Working with Priya was a genuine pleasure. She takes the time to understand what you actually want, and her persistence is unmatched — she kept digging until she uncovered an opportunity that fit me perfectly. Thoughtful, relentless, and exceptional at her craft."
+        "Working with Priya was a genuine pleasure. She takes the time to understand what your business actually needs, and her attention to detail is unmatched — she kept refining until the copy and the design sounded like us. Thoughtful, relentless, and exceptional at her craft."
       ]
     },
     {
       "name": "Vikram Nair",
-      "role": "Quantitative Engineer",
+      "role": "Marketing Manager",
       "company": "Vantara Labs",
-      "position": "Quantitative Engineer",
+      "position": "Marketing Manager",
       "image": "/img/testimonials/vikram-nair.jpg",
       "text": [
-        "Priya's great. She narrowed my search to trading firms I'd actually be interested in and wouldn't have known about otherwise, had a ton of useful connections, and gave specific insight at every step. Responsive too — but she never called at 7am the way a lot of recruiters in this space do. Highly recommend working with her."
+        "Priya's great. She narrowed a very vague brief down to a site that actually converts, brought ideas we wouldn't have known to ask for, and explained every decision along the way. Responsive too — but never the 7am calls a lot of agencies seem to think are normal. Highly recommend working with her."
       ]
     },
     {
       "name": "Wei Jun Lau",
       "role": null,
-      "company": "Halvard Quantitative",
-      "position": "Quantitative Developer",
+      "company": "Halvard Bakehouse",
+      "position": "General Manager",
       "image": "/img/testimonials/wei-jun-lau.jpg",
       "text": [
-        "Adam's mission is putting the most capable people in the highest-leverage seats, and he happens to be the most capable person I've met in recruiting. What made him great to work with wasn't just his access to the strongest firms or the connections that made every process smooth. It was his humility and steady support through every step — a rare thing when it comes to recruiters."
+        "Adam's mission is putting the right tool in front of the people who need it, and he happens to be the most capable engineer I've worked with. What made him great to work with wasn't just the quality of the build or how fast it went live. It was his patience and steady support through every question after launch — a rare thing when it comes to developers."
       ]
     },
     {
       "name": "Kelvin Ooi",
-      "role": "Senior Software Engineer",
+      "role": "Head of Product",
       "company": "AI Start Up",
-      "position": "Staff Engineer",
+      "position": "Head of Product",
       "image": "/img/testimonials/kelvin-ooi.jpg",
       "text": [
-        "Adam was foundational in helping me land my next role in engineering. Once we connected he took my experience, expertise and what I actually wanted into account and routed me to a few options that all turned into screenings. Along the way I really appreciated the check-ins, encouragement and collaboration that led to a fulfilling role I would never have found with my own scattershot approach. Having that support in today's job market was instrumental."
+        "Adam was foundational in getting our customer portal off the ground. Once we connected he took our stack, our timeline and what we actually wanted into account and proposed a build that we could ship in weeks. Along the way I really appreciated the check-ins, the pushback where it was needed, and the collaboration that led to a product I would never have got out of our own scattershot approach."
       ]
     },
     {
       "name": "Hafiz Rosli",
-      "role": "ML Engineer",
+      "role": "Director",
       "company": "Corvid AI",
-      "position": "AI Engineer",
+      "position": "Director",
       "image": "/img/testimonials/hafiz-rosli.jpg",
       "text": [
-        "Adam is incredibly helpful, going to great lengths to make sure you're properly equipped for the interview process. With his help and support, I'm now working as an Applied AI Engineer at Corvid AI!"
+        "Adam is incredibly helpful, going to great lengths to make sure you understand every part of what he's building for you. With his help and support, our WhatsApp order agent is now handling enquiries around the clock at Corvid AI!"
       ]
     }
   ],
@@ -106,8 +106,8 @@
       "calendly": "https://calendly.com/ffdevstudio",
       "fictional": true,
       "bio": [
-        "Nur Aisyah Rahman is the founder and Chief Executive Officer of FF Dev Studio. She started the studio after a decade placing quantitative researchers and platform engineers, and still runs the searches that matter most herself — from the first conversation to the signed offer.",
-        "Before FF she led talent for a systematic trading desk in Kuala Lumpur and Singapore, where she learned that the best people are never on the market for long and rarely answer a cold message. That conviction shapes how the studio works: fewer searches, deeper relationships, honest advice.",
+        "Nur Aisyah Rahman is the founder and Chief Executive Officer of FF Dev Studio. She started the studio after a decade of building websites and internal tools for other people’s agencies, and still leads the projects that matter most herself — from the first brief to the launch checklist.",
+        "Before FF she ran product for a payments startup in Kuala Lumpur, where she learned that the fastest way to lose a client is to put three people between them and the person writing the code. That conviction shapes how the studio works: fewer projects, direct conversations, and work that is finished properly.",
         "This is a fictional profile created for a demonstration site. The photograph is AI-generated and does not depict a real person."
       ]
     },
@@ -122,8 +122,8 @@
       "calendly": "https://calendly.com/ffdevstudio",
       "fictional": true,
       "bio": [
-        "Daniel Lim is Chief Operating Officer at FF Dev Studio. He runs the engine behind every search: intake, research, interview logistics and offer negotiation, so that a candidate hears back the same day and a client always knows exactly where a search stands.",
-        "Daniel came to search from engineering management at a payments company, which is why infrastructure and execution teams tend to land on his desk.",
+        "Daniel Lim is Chief Operating Officer at FF Dev Studio. He runs the engine behind every build: scoping, timelines, staging, launches and the care plans that follow, so a client always knows exactly where their project stands and never waits a day for an answer.",
+        "Daniel came to the studio from engineering management at a logistics company, which is why the order flows, dashboards and integrations tend to land on his desk.",
         "This is a fictional profile created for a demonstration site. The photograph is AI-generated and does not depict a real person."
       ]
     },
@@ -138,8 +138,8 @@
       "calendly": "https://calendly.com/ffdevstudio",
       "fictional": true,
       "bio": [
-        "Priya Raghavan is Chief People Officer at FF Dev Studio. She leads candidate relationships across research and AI — the long conversations about where someone should spend the next five years, and what a fund or a lab will actually feel like from the inside.",
-        "Priya spent eight years in research recruiting for a multi-strategy fund before joining FF, and has placed heads of research, founding ML hires and entire desk buildouts.",
+        "Priya Raghavan is Chief People Officer at FF Dev Studio. She leads client relationships across every engagement — the long first conversation about what a business actually needs, and the honest read on what a website or a tool will and will not change for it.",
+        "Priya spent eight years in brand and content roles for a hospitality group before joining FF, and now shapes the voice of every site the studio ships.",
         "This is a fictional profile created for a demonstration site. The photograph is AI-generated and does not depict a real person."
       ]
     },
@@ -154,8 +154,8 @@
       "calendly": "https://calendly.com/ffdevstudio",
       "fictional": true,
       "bio": [
-        "Adam Hakim is Chief Technology Officer at FF Dev Studio. A former low-latency C++ engineer, he owns the technical read on every engineering search — which stacks a candidate has genuinely built on, and which teams will stretch them.",
-        "He also builds the studio’s own tooling, from the research pipeline to the site you are looking at.",
+        "Adam Hakim is Chief Technology Officer at FF Dev Studio. A former platform engineer, he owns the technical decisions on every build — which stack a project genuinely needs, how it will hold up under real traffic, and how it will still be maintainable in three years.",
+        "He also builds the studio’s own tooling, from the deploy pipeline to the site you are looking at.",
         "This is a fictional profile created for a demonstration site. The photograph is AI-generated and does not depict a real person."
       ]
     }

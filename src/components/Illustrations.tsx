@@ -40,7 +40,7 @@ export function Illustration1({ className }: { className?: string }) {
     })
   })
   return (
-    <svg ref={ref} aria-label="Executive Search animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
+    <svg ref={ref} aria-label="Brand websites animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
       <circle data-ring cx="400" cy="400" r="398.5" strokeDasharray="4 7" strokeWidth="4" style={fill} />
       <circle cx="200" cy="400" r="199.5" strokeWidth="1.5" />
       <circle cx="600" cy="400" r="199.5" strokeWidth="1.5" />
@@ -68,7 +68,7 @@ export function Illustration2({ className }: { className?: string }) {
     })
   })
   return (
-    <svg ref={ref} aria-label="Quantitative Research animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none" strokeWidth="2" stroke="currentColor" className={className}>
+    <svg ref={ref} aria-label="Web apps and dashboards animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none" strokeWidth="2" stroke="currentColor" className={className}>
       <mask id={`${id}-m1`}><circle cx="400" cy="400" r="390" fill="#fff" /></mask>
       <g mask={`url(#${id}-m1)`}>
         <rect data-box y="100" width="800" height="600" style={fill} />
@@ -103,7 +103,7 @@ export function Illustration3({ className }: { className?: string }) {
     })
   })
   return (
-    <svg ref={ref} aria-label="Engineering & AI animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none" stroke="currentColor" strokeWidth="3" strokeDasharray="4 6" className={className} style={{ transformOrigin: '50% 50%' }}>
+    <svg ref={ref} aria-label="Automation and AI animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none" stroke="currentColor" strokeWidth="3" strokeDasharray="4 6" className={className} style={{ transformOrigin: '50% 50%' }}>
       <circle cx="400" cy="400" r="399" strokeDasharray="none" />
       {Array.from({ length: N }, (_, i) => (<path key={i} data-ray d="M420,400 760,400" />))}
     </svg>
@@ -122,7 +122,7 @@ export function Illustration4({ className }: { className?: string }) {
     svg.querySelector('[data-s3]')!.setAttribute('transform', `rotate(${(-t * 14) % 360} 400 400)`)
   })
   return (
-    <svg ref={ref} aria-label="Hardware & Systems animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" overflow="visible" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
+    <svg ref={ref} aria-label="Care and hosting animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" overflow="visible" fill="none" stroke="currentColor" strokeWidth="2" className={className}>
       <g data-g1 style={fill}><circle cx="400" cy="400" r="330" strokeDasharray="4 7" strokeWidth="4" /><path data-s1 d="M60,400v20h20v-20z" fill="currentColor" /></g>
       <g><circle cx="400" cy="400" r="330" /><path d="M380,400v20h20v-20z" fill="currentColor" /></g>
       <g data-g3 style={fill}><circle cx="400" cy="400" r="330" strokeDasharray="4 7" strokeWidth="4" /><path data-s3 d="M720,400v20h20v-20z" fill="currentColor" /></g>

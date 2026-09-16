@@ -1,8 +1,8 @@
-# Build brief — FF Search (aspensearch.com rebuild under FF Dev Studio)
+# Build brief — FF Dev Studio demo (aspensearch.com rebuild)
 
 ## Identity
 
-- **Product name:** FF Search — hero reads `FF` / `Studio` / `PLACING WINNERS.`; long form `FF Dev Studio`
+- **Product name:** FF Dev Studio demo — hero reads `FF` / `Studio` / `BUILT PROPERLY.`; long form `FF Dev Studio`. Since 2026-09-16 all copy describes FF Dev Studio (web + software studio) rather than executive search; team, testimonials and the client/hire logo walls are declared fictional/placeholder in-page.
 - **Owner / brand:** FF Dev Studio (Fakhrul's studio; mark = `//FF` from `~/Desktop/dev/ffdevstudio/brand-system`)
 - **Whose site is the reference?** a third party's (Aspen Search, built by Code Resolution / Edoardo Lunardi).
   Fakhrul's instruction (2026-09-15): assets, images, fonts may be taken and reused — local test only,

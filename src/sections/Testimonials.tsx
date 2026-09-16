@@ -66,7 +66,7 @@ function Meta({ label, value, k }: { label: string; value: string; k: number }) 
   )
 }
 
-const NOTE = 'These are fictional people and companies. FF Search is a demonstration site built by FF Dev Studio; no testimonial here describes a real engagement.'
+const NOTE = 'These are fictional people and companies. This is a demonstration site by FF Dev Studio; no testimonial here describes a real engagement.'
 
 function Note({ className = '' }: { className?: string }) {
   return (
