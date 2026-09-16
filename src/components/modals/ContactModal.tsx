@@ -75,7 +75,7 @@ export function ContactModal() {
             </ul>
             <ul className="flex divide-x border-b"><li className="w-full"><ButtonLink variant="bg" size="row" href={brand.linkedin} target="_blank" rel="noopener" icon={<ExternalIcon />}>Linkedin</ButtonLink></li></ul>
             <div className="mt-auto px-12 py-20 lg:px-20">
-              <div className="grid grid-cols-2 gap-12 lg:grid-cols-1"><AnalogClock zone="KL" /><AnalogClock zone="SG" /></div>
+              <div className="grid grid-cols-2 gap-12 lg:grid-cols-1"><AnalogClock zone="KL" /><AnalogClock zone="NYC" /></div>
             </div>
           </div>
         </div>
