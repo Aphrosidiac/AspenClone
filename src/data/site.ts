@@ -20,9 +20,9 @@ export const nav = [
 
 export const hero = {
   slogan: ['placing', 'winners.'],
-  intro: 'Placing software engineers, quantitative researchers, and AI/ML scientists into the firms shaping markets and technology since 2006.',
+  intro: 'Connecting engineers, quant researchers, and AI/ML specialists with the trading firms and technology teams that define where the industry goes next.',
   cta: 'Start a conversation',
-  welcome: ["We don't move volume. We move careers that compound — and the firms smart enough to invest in them.", '', 'Recent hires from:'],
+  welcome: ["Volume was never the point. We back a handful of careers a year and the teams with the conviction to build around them.", '', 'Recently placed with:'],
   hires: [
     { src: '/img/logos/hire-1.svg', w: 100, h: 80 },
     { src: '/img/logos/hire-2.svg', w: 100, h: 80 },
