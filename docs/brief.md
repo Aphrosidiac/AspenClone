@@ -2,6 +2,7 @@
 
 ## Identity
 
+- **Deployed:** https://ff-search-b4q.pages.dev — CF Pages project `ff-search` on the personal account, `scripts/deploy.sh` (2026-09-16).
 - **Product name:** FF Dev Studio demo — hero reads `FF` / `Studio` / `BUILT PROPERLY.`; long form `FF Dev Studio`. Since 2026-09-16 all copy describes FF Dev Studio (web + software studio) rather than executive search; team, testimonials and the client/hire logo walls are declared fictional/placeholder in-page.
 - **Owner / brand:** FF Dev Studio (Fakhrul's studio; mark = `//FF` from `~/Desktop/dev/ffdevstudio/brand-system`)
 - **Whose site is the reference?** a third party's (Aspen Search, built by Code Resolution / Edoardo Lunardi).

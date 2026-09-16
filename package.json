@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "vite --port 3158 --host",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview --port 3159 --host"
+    "preview": "vite preview --port 3159 --host",
+    "deploy": "./scripts/deploy.sh",
+    "deploy:preview": "FF_BRANCH=preview ./scripts/deploy.sh"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",

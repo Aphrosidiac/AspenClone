@@ -5,6 +5,8 @@ all copy rewritten to describe FF Dev Studio (websites, web apps, automation, ca
 testimonials and client/hire logos are fictional or placeholders and say so in-page. Vite 8 + React 19 + Tailwind v4 (the reference's own token vocabulary) + motion +
 Lenis + three (raw; own fluid sim and shader planes).
 
+**Live:** https://ff-search-b4q.pages.dev (Cloudflare Pages, direct upload — `npm run deploy`; pushing to GitHub deploys nothing).
+
 ```bash
 npm install
 npm run dev        # http://localhost:3158
