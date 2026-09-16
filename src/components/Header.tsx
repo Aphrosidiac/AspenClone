@@ -125,8 +125,8 @@ export function Header() {
                     </motion.li>
                   ))}
                   <motion.li className="grid h-60 grid-cols-3 divide-x bg-theme-bg" style={{ zIndex: 0 }} initial={{ y: '-100%' }} animate={{ y: 0 }} exit={{ y: '-100%' }} transition={{ duration: 0.9, ease: EASE_OUT, delay: 0.2 }}>
-                    <div className="flex items-center justify-center gap-12 px-12"><AnalogClock zone="NYC" showTime={false} /></div>
-                    <div className="flex items-center justify-center gap-12 px-12"><AnalogClock zone="LA" showTime={false} /></div>
+                    <div className="flex items-center justify-center gap-12 px-12"><AnalogClock zone="KL" showTime={false} /></div>
+                    <div className="flex items-center justify-center gap-12 px-12"><AnalogClock zone="SG" showTime={false} /></div>
                     <ThemeToggle className="size-full px-12" />
                   </motion.li>
                 </ul>

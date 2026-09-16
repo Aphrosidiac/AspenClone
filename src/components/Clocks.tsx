@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { cx } from '../lib/cx'
 import { Odometer } from './Odometer'
 
-const ZONES = { NYC: 'America/New_York', LA: 'America/Los_Angeles' } as const
+const ZONES = { KL: 'Asia/Kuala_Lumpur', SG: 'Asia/Singapore' } as const
 type Zone = keyof typeof ZONES
 
 function partsFor(zone: Zone, d = new Date()) {
@@ -17,12 +17,12 @@ function useNow(ms = 1000) {
   return now
 }
 
-/** Header time: odometer clock that alternates NYC / LA, sliding by a whole row. */
+/** Header time: odometer clock that alternates KL / SG, sliding by a whole row. */
 export function HeaderTime({ className }: { className?: string }) {
   const now = useNow(1000)
   const [idx, setIdx] = useState(0)
   useEffect(() => { const t = setInterval(() => setIdx((i) => (i + 1) % 2), 5000); return () => clearInterval(t) }, [])
-  const zones: Zone[] = ['NYC', 'LA']
+  const zones: Zone[] = ['KL', 'SG']
   const cur = partsFor(zones[idx], now)
   const label = `${String(cur.hour).padStart(2, '0')}:${String(cur.minute).padStart(2, '0')} ${cur.period}`
   return (

@@ -21,7 +21,7 @@ export function Footer() {
               <ul className="flex flex-col gap-8">{nav.map((n) => (<li key={n.href}><NavLink href={'/' + n.href}>{n.text}</NavLink></li>))}</ul>
             </div>
             <div className="flex-1 px-12 py-20 lg:px-20">
-              <div className="flex flex-col gap-12"><AnalogClock zone="NYC" /><AnalogClock zone="LA" /></div>
+              <div className="flex flex-col gap-12"><AnalogClock zone="KL" /><AnalogClock zone="SG" /></div>
             </div>
           </div>
           <div className="grid grid-cols-1 divide-y lg:grid-cols-2 lg:divide-x lg:divide-y-0">
